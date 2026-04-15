@@ -169,6 +169,172 @@ p{margin-bottom:13px;text-align:justify}
   .gg{grid-template-columns:1fr}.prob-body{padding:18px 16px}.gr-row{grid-template-columns:1fr}
 }
 @media print{.navbar,.prog,.fn{display:none!important}.pw{margin:0;padding:0;max-width:100%}.sc,.problem{break-inside:avoid;box-shadow:none}}
+
+/* ═══════════════ MOBILE-ONLY FIXES (≤ 768px) ═══════════════ */
+@media (max-width: 768px) {
+
+  /* ── 1. Prevent horizontal overflow ── */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* ── 2. Navbar compact on mobile ── */
+  .navbar {
+    --nav-h: 78px;
+  }
+  .nav-row1 {
+    height: 40px;
+    padding: 0 10px;
+    gap: 5px;
+  }
+  .jump-btn {
+    padding: 4px 10px;
+    font-size: 11px;
+    border-radius: 18px;
+  }
+  #ns {
+    font-size: 10px;
+    max-width: 120px;
+  }
+  .nav-row2 {
+    height: 34px;
+    padding: 0 8px;
+    gap: 2px;
+  }
+  .nav-link {
+    font-size: 10.5px;
+    padding: 2px 7px;
+    border-radius: 14px;
+  }
+  .prog {
+    top: calc(78px - 2px);
+  }
+
+  /* ── 3. Content area ── */
+  .pw {
+    margin-top: calc(78px + 16px);
+    padding: 0 10px;
+    margin-bottom: 60px;
+  }
+
+  /* ── 4. Section cards text overflow ── */
+  .sc {
+    padding: 18px 14px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  p, .ins, .ana, .exm, .note {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* ── 5. Equation boxes: scrollable, not clipped ── */
+  .eq {
+    padding: 10px 12px;
+    font-size: 13.5px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+
+  /* ── 6. MathJax overflow handling ── */
+  mjx-container, .MathJax, .MathJax_Display {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    max-width: 100% !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── 7. Chapter cover compact ── */
+  .lh {
+    padding: 28px 14px;
+    border-radius: 8px;
+  }
+  .lh h1 {
+    font-size: 20px;
+  }
+  .lh .s, .lh .sub {
+    font-size: 13px;
+  }
+  .lh .meta {
+    gap: 8px;
+  }
+  .lh .meta span {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  /* ── 8. Sheet divider compact ── */
+  .sheet-divider {
+    padding: 28px 14px;
+    border-radius: 8px;
+    margin: 32px 0 24px;
+  }
+  .sheet-divider h2 {
+    font-size: 20px;
+  }
+  .sheet-divider .meta {
+    gap: 8px;
+  }
+
+  /* ── 9. Float buttons: reposition, no overlap ── */
+  .fn {
+    bottom: 14px;
+    right: 12px;
+    gap: 5px;
+  }
+  .fn button {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  /* ── 10. Callout boxes reduced padding ── */
+  .ins, .ana, .exm {
+    padding: 14px 12px 14px 38px;
+  }
+  .ins::before, .ana::before, .exm::before {
+    left: 10px;
+    font-size: 15px;
+  }
+  .note {
+    padding: 10px 12px 10px 38px;
+  }
+  .note::before {
+    left: 10px;
+  }
+
+  /* ── 11. Tables scrollable ── */
+  table {
+    font-size: .82rem;
+  }
+
+  /* ── 12. Figures responsive ── */
+  .fig-wrap img, figure img, .sc img {
+    max-width: 100%;
+    height: auto;
+  }
+  figcaption {
+    font-size: .82rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* ── 13. Grid layouts single-column ── */
+  .gg, .gr-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── 14. Problem cards ── */
+  .prob-head {
+    padding: 14px;
+    gap: 10px;
+  }
+  .prob-body {
+    padding: 14px 12px;
+  }
+}
 </style>
 </head>
 <body>

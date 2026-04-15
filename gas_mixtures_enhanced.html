@@ -442,6 +442,229 @@ footer{text-align:center;padding:20px;font-size:.77rem;color:var(--ink3);
   #topnav{display:none}
   body{padding-top:0}
 }
+
+/* ═══════════════ MOBILE-ONLY FIXES (≤ 768px) ═══════════════ */
+@media (max-width: 768px) {
+
+  /* ── 1. Sheet Tab: lock to right edge, compact, not floating center ── */
+  #sheet-tab {
+    position: fixed;
+    top: auto;
+    bottom: 70px;
+    right: 0;
+    transform: none;
+    z-index: 850;
+    border-radius: 8px 0 0 8px;
+    animation: none;
+    box-shadow: -2px 1px 10px rgba(180,83,9,.35);
+  }
+  #sheet-tab:hover {
+    transform: translateX(-3px);
+  }
+  #sheet-tab:active {
+    transform: translateX(-1px);
+  }
+  .st-inner {
+    padding: 8px 7px 8px 9px;
+  }
+  .st-label {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+  .st-icon {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  /* ── 2. Floating nav: smaller, no overlap ── */
+  #float-nav {
+    bottom: 14px;
+    left: 10px;
+    gap: 5px;
+  }
+  .fn-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
+  }
+  #fn-home {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+  .fn-btn::after {
+    display: none; /* hide tooltips on mobile */
+  }
+
+  /* ── 3. Text & equation overflow fixes ── */
+  body {
+    overflow-x: hidden;
+  }
+  main {
+    padding: 0 10px 70px;
+  }
+  .sec {
+    padding: 20px 14px;
+    margin: 16px 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .sec::before {
+    width: 3px;
+    top: 12px;
+    bottom: 12px;
+  }
+  p, .gt, .sb, .note, .def, .sym, .deriv, .law, .ins, .ana {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  .fbox {
+    padding: 12px 10px;
+    font-size: .92rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+  .eq-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .seq {
+    padding: 8px 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+
+  /* MathJax overflow */
+  mjx-container, .MathJax, .MathJax_Display {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    max-width: 100% !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── 4. Tables scrollable on mobile ── */
+  .tw {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 12px -4px;
+    padding: 0 4px;
+  }
+  table {
+    font-size: .82rem;
+    min-width: 480px;
+  }
+
+  /* ── 5. Header compact on mobile ── */
+  .site-header {
+    padding: 24px 16px;
+  }
+  .h-title {
+    font-size: 1.5rem;
+  }
+  .h-sub {
+    font-size: .88rem;
+  }
+  .h-meta {
+    gap: 6px;
+  }
+  .h-meta span {
+    font-size: 9px;
+    padding: 3px 9px;
+  }
+
+  /* ── 6. Cards single-column ── */
+  .c2, .gc3, .fig-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── 7. Problem cards padding ── */
+  .ph {
+    padding: 14px 14px 12px;
+    gap: 10px;
+  }
+  .pnum {
+    width: 34px;
+    height: 34px;
+    font-size: .78rem;
+  }
+  .pstmt {
+    font-size: .95rem;
+  }
+  .psec {
+    padding: 14px;
+  }
+  .ans {
+    margin: 0 14px 16px;
+    padding: 12px 14px;
+  }
+
+  /* ── 8. Sheet header compact ── */
+  .sheet-hdr {
+    padding: 20px 16px;
+    border-radius: 8px;
+  }
+  .sheet-hdr h2 {
+    font-size: 1.3rem;
+  }
+  .sh-stats {
+    gap: 6px;
+  }
+
+  /* ── 9. Part banner compact ── */
+  .part-banner {
+    padding: 10px 14px;
+    gap: 8px;
+  }
+  .pb-title {
+    font-size: 1rem;
+  }
+
+  /* ── 10. Images responsive ── */
+  .fig img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ── 11. Callout boxes padding ── */
+  .note, .def, .sym, .law, .deriv, .ins, .ana {
+    padding: 10px 12px;
+  }
+  .ins, .ana, .exm {
+    padding-left: 38px;
+  }
+  .ins::before, .ana::before, .exm::before {
+    left: 10px;
+  }
+
+  /* ── 12. Summary section ── */
+  .sum {
+    padding: 18px 14px;
+  }
+  .cgrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 6px;
+  }
+  .chip {
+    font-size: .68rem;
+    padding: 6px 8px;
+  }
+
+  /* ── 13. Textbook examples ── */
+  .exb {
+    padding: 14px;
+  }
+  .exh {
+    padding: 12px 14px 10px;
+    gap: 8px;
+  }
+  .exans {
+    padding: 10px 12px;
+    margin-top: 8px;
+  }
+}
 </style>
 </head>
 <body>

@@ -865,6 +865,199 @@ footer {
 
 /* ══════════════════ SELECTION ══════════════════ */
 ::selection { background: var(--primary-200); color: var(--primary-dark); }
+/* ══════════════════ MOBILE-ONLY FIXES (≤ 768px) ══════════════════ */
+@media (max-width: 768px) {
+
+  /* ── 1. Prevent horizontal overflow ── */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* ── 2. Sheet Tab: lock to bottom-right, not floating center ── */
+  #sheet-tab {
+    position: fixed;
+    top: auto;
+    bottom: 70px;
+    right: 0;
+    transform: none;
+    z-index: 450;
+    animation: none;
+    box-shadow: -2px 1px 10px rgba(192,120,48,.30);
+    border-radius: 8px 0 0 8px;
+  }
+  #sheet-tab:hover {
+    transform: translateX(-3px);
+  }
+  #sheet-tab:active {
+    transform: translateX(-1px);
+  }
+  .tab-inner {
+    padding: 7px 8px 7px 10px;
+  }
+  .tab-text {
+    font-size: 8.5px;
+    letter-spacing: 1px;
+  }
+  .tab-icon {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  /* ── 3. TOC nav: compact ── */
+  .toc-wrap {
+    padding: 4px 8px;
+  }
+  .toc-grid a {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  .toc-label {
+    display: none;
+  }
+
+  /* ── 4. Floating nav: smaller, repositioned ── */
+  #float-controls {
+    bottom: 14px;
+    left: 10px;
+    gap: 5px;
+  }
+  .fc-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
+  }
+  #btn-home {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+
+  /* ── 5. Page layout compact ── */
+  .page-body {
+    padding: 16px 10px 70px;
+  }
+  .page-header {
+    padding: 24px 14px 20px;
+  }
+  .page-header h1 {
+    font-size: 1.4rem;
+  }
+
+  /* ── 6. Section cards: text overflow fix ── */
+  .sec-body {
+    padding: 16px 12px 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .sec-head {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .sec-title-en {
+    font-size: .88rem;
+  }
+  .sec-tag {
+    font-size: 9px;
+    padding: 3px 7px;
+  }
+  p, li, .note, .tb, .step, .res {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* ── 7. Equations: scrollable, not clipped ── */
+  .eq {
+    padding: 12px 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+  mjx-container, .MathJax, .MathJax_Display {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    max-width: 100% !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── 8. Tables scrollable ── */
+  .tbl-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table {
+    font-size: .82rem;
+  }
+
+  /* ── 9. Q&A section compact ── */
+  .qa-head {
+    padding: 14px 12px;
+  }
+  .qa-head h2 {
+    font-size: 1rem;
+  }
+  .qa-body {
+    padding: 14px 10px;
+  }
+  .q-top {
+    padding: 10px 12px;
+  }
+  .q-ans {
+    padding: 12px 14px;
+  }
+  .q-en {
+    font-size: 13px;
+  }
+
+  /* ── 10. Example cards compact ── */
+  .ex-head {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .ex-body {
+    padding: 14px 12px;
+  }
+  .step, .res {
+    padding: 8px 10px;
+    font-size: 12.5px;
+  }
+
+  /* ── 11. Note boxes ── */
+  .note {
+    padding: 12px 14px;
+    font-size: 13.5px;
+  }
+
+  /* ── 12. Figures responsive ── */
+  .fig-wrap {
+    padding: 10px;
+  }
+  .fig-img {
+    max-width: 100%;
+  }
+  .fig-grid {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fig-grid .fig-wrap {
+    max-width: 100%;
+    min-width: auto;
+  }
+  .fig-cap {
+    font-size: 11px;
+  }
+
+  /* ── 13. Term blocks ── */
+  .tb {
+    padding: 10px 12px 10px 10px;
+  }
+
+  /* ── 14. Footer compact ── */
+  footer {
+    padding: 20px 14px;
+    font-size: 11px;
+  }
+}
 
 </style>
 </head>

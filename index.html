@@ -739,6 +739,39 @@
             .card-footer {
                 padding: 14px 20px;
             }
+
+            /* ── Text overflow & content readability ── */
+            body {
+                overflow-x: hidden;
+            }
+
+            .card-body p,
+            .topic-list li,
+            .footer-text {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+            }
+
+            .topic-card {
+                padding: 20px 16px;
+            }
+
+            .topic-list li {
+                font-size: 13px;
+            }
+
+            .footer-content {
+                padding: 0 12px;
+            }
+
+            .footer-title {
+                font-size: 16px;
+            }
+
+            .footer-text {
+                font-size: 12px;
+            }
         }
 
         @media (max-width: 480px) {
