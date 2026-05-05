@@ -1059,6 +1059,69 @@ footer {
   }
 }
 
+
+/* ═══════════════════════════════════════════════
+   DISTRACTION-FREE READING MODE  v3
+   Top bar, TOC, floats + side tabs → only visible
+   while user is actively scrolling.
+   ═══════════════════════════════════════════════ */
+
+/* ── TOP NAV — hidden: slide up off-screen
+      Override to position:fixed so it leaves the
+      document flow; top:-120px parks it off-screen.
+   ────────────────────────────────────────────── */
+.toc-wrap {
+  position: fixed !important;
+  top: -120px !important;
+  left: 0 !important;
+  right: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  /* ease-out: slow, graceful retreat */
+  transition: top 0.45s ease-out, opacity 0.45s ease-out !important;
+  will-change: top, opacity;
+}
+
+body.nav-active .toc-wrap {
+  top: 0 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  /* ease-in: snappy arrival */
+  transition: top 0.28s ease-in, opacity 0.28s ease-in !important;
+}
+
+/* ── FLOATING PANELS — fade + lift ──────────── */
+#float-controls {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(24px) !important;
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out !important;
+  will-change: opacity, transform;
+}
+body.nav-active #float-controls {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.28s ease-in, transform 0.28s ease-in !important;
+}
+
+/* ── SIDE TABS — fade only (preserve existing
+      translateY(-50%) vertical-center transform) ── */
+#sheet-tab {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  transition: opacity 0.45s ease-out,
+              visibility 0s linear 0.45s !important;
+}
+body.nav-active #sheet-tab {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  transition: opacity 0.28s ease-in,
+              visibility 0s linear 0s !important;
+}
+
 </style>
 </head>
 <body>
@@ -3212,5 +3275,77 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 </script>
 
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   DISTRACTION-FREE READING — Active-Scroll Visibility Controller
+   ▸ UI appears immediately when user starts scrolling (> 80 px)
+   ▸ UI hides automatically 1 s after scrolling stops
+   ▸ rAF-throttled scroll handler — zero layout thrash
+   ════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  /* ── Tunables ─────────────────────────────────────────── */
+  var MIN_Y       = 80;    // px — ignore tiny top-of-page scroll
+  var HIDE_DELAY  = 1000;  // ms idle before UI fades out
+  var SHOW_DELAY  = 0;     // ms — show is instant (feels snappy)
+
+  /* ── State ────────────────────────────────────────────── */
+  var body      = document.body;
+  var ticking   = false;
+  var hideTimer = null;
+  var visible   = false;
+
+  /* ── Helpers ──────────────────────────────────────────── */
+  function showUI() {
+    if (visible) return;
+    visible = true;
+    clearTimeout(hideTimer);
+    body.classList.add('nav-active');
+  }
+
+  function scheduleHide() {
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function () {
+      visible = false;
+      body.classList.remove('nav-active');
+    }, HIDE_DELAY);
+  }
+
+  /* ── Core scroll handler (runs inside rAF) ────────────── */
+  function onScrollFrame() {
+    var y = window.scrollY || window.pageYOffset || 0;
+
+    if (y > MIN_Y) {
+      showUI();          // snap visible immediately
+      scheduleHide();    // (re)start the idle countdown
+    } else {
+      /* Near top — always hide regardless */
+      clearTimeout(hideTimer);
+      if (visible) {
+        visible = false;
+        body.classList.remove('nav-active');
+      }
+    }
+
+    ticking = false;
+  }
+
+  /* ── Throttled scroll listener ────────────────────────── */
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(onScrollFrame);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  /* ── Touch: treat touchstart as "user is back" ─────────── */
+  window.addEventListener('touchstart', function () {
+    if (visible) scheduleHide(); // reset timer on touch
+  }, { passive: true });
+
+}());
+</script>
 </body>
 </html>
