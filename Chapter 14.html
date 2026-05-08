@@ -1470,12 +1470,36 @@ body.nav-active #pb {
 <section id="s7e">
 <div class="sc">
 <h3>Adiabatic Mixing of Airstreams</h3>
-<div class="eq">$$\frac{\dot{m}_{a1}}{\dot{m}_{a2}} = \frac{\psi_2-\psi_3}{\psi_3-\psi_1} = \frac{h_2-h_3}{h_3-h_1}$$<span class="eq-l">Eq. 14-24</span></div>
-<p>النقطة 3 تقع على الخط المستقيم بين 1 و 2 على الـ Chart. نسبة $\overline{2-3}/\overline{3-1} = \dot{m}_{a1}/\dot{m}_{a2}$.</p>
+
+<p>كثير من تطبيقات الـ <span class="t">Air-Conditioning</span> تتطلب خلط تيارين من الهواء. هذا ينطبق بشكل خاص على المباني الكبيرة ومعظم مصانع الإنتاج والمستشفيات التي تتطلب خلط الهواء المكيّف مع نسبة معينة من الهواء الخارجي الطازج قبل توجيهه إلى فضاء المعيشة. يتم الخلط ببساطة عن طريق دمج التيارين.</p>
+
+<div class="fig" style="max-width:520px"><img src="fig14-28_adiabatic_mixing.png" alt="Figure 14-28: Adiabatic mixing of two airstreams"><figcaption>FIGURE 14-28: When two airstreams at states 1 and 2 are mixed adiabatically, the state of the mixture lies on the straight line connecting the two states.</figcaption></div>
+
+<p>انتقال الحرارة مع المحيط عادةً يكون صغيرًا، لذلك يمكن اعتبار عمليات الخلط <span class="t">Adiabatic</span>. عمليات الخلط عادةً لا تتضمن أي تفاعلات شغل، والتغيرات في الطاقة الحركية والكامنة تكون مهملة. عندها تُختصر موازين الكتلة والطاقة للخلط الـ Adiabatic لتيارين إلى:</p>
+
+<h4>Balance Equations for Adiabatic Mixing</h4>
+
+<div class="eq">$$\text{Mass of dry air:}\quad \dot{m}_{a1} + \dot{m}_{a2} = \dot{m}_{a3}$$<span class="eq-l">Eq. 14-21</span></div>
+<div class="eq">$$\text{Mass of water vapor:}\quad \psi_1\,\dot{m}_{a1} + \psi_2\,\dot{m}_{a2} = \psi_3\,\dot{m}_{a3}$$<span class="eq-l">Eq. 14-22</span></div>
+<div class="eq">$$\text{Energy:}\quad \dot{m}_{a1}\,h_1 + \dot{m}_{a2}\,h_2 = \dot{m}_{a3}\,h_3$$<span class="eq-l">Eq. 14-23</span></div>
+
+<p>بحذف $\dot{m}_{a3}$ من العلاقات أعلاه، نحصل على:</p>
+
+<div class="eq">$$\frac{\dot{m}_{a1}}{\dot{m}_{a2}} = \frac{\psi_2 - \psi_3}{\psi_3 - \psi_1} = \frac{h_2 - h_3}{h_3 - h_1}$$<span class="eq-l">Eq. 14-24</span></div>
+
+<h4>Geometric Interpretation on the Psychrometric Chart</h4>
+<p>هذه المعادلة لها تفسير هندسي واضح على الـ <span class="t">Psychrometric Chart</span>: تُظهر أن نسبة $(\psi_2 - \psi_3)$ إلى $(\psi_3 - \psi_1)$ تساوي نسبة $\dot{m}_{a1}$ إلى $\dot{m}_{a2}$، ونسبة $(h_2 - h_3)$ إلى $(h_3 - h_1)$ تساوي أيضًا نفس النسبة.</p>
+
+<p>الحالة الوحيدة التي تحقق كلا الشرطين هي نقطة التقاطع الواقعة على <strong>الخط المستقيم</strong> الذي يصل بين الحالتين 1 و 2. وبالتالي نستنتج:</p>
+
+<div class="ana">
+<div class="ana-t">Conclusion — Adiabatic Mixing Principle</div>
+<p>عند خلط تيارين من الهواء عند حالتين مختلفتين (الحالة 1 والحالة 2) <span class="t">Adiabatically</span>، فإن حالة الخليط (الحالة 3) <strong>تقع على الخط المستقيم الذي يصل بين الحالتين 1 و 2</strong> على الـ Psychrometric Chart. ونسبة المسافتين $\overline{2\text{-}3}$ إلى $\overline{3\text{-}1}$ تساوي نسبة معدلات تدفق الكتلة $\dot{m}_{a1}/\dot{m}_{a2}$.</p>
+</div>
 
 <div class="ins">
 <div class="ins-t">Concept Insight — Fog from Mixing</div>
-<p>إذا كانت الحالتان 1 و 2 قريبتين من الـ Saturation Line، قد يقع الخط المستقيم بينهما يسار المنحنى — فيتكثف بعض الماء أثناء الخلط. هذا يفسر الضباب الذي يتكون أحيانًا عند خلط تيارين رطبين دافئين.</p>
+<p>الطبيعة المقعرة لمنحنى الـ Saturation والاستنتاج أعلاه يقودان إلى احتمال مثير. عندما تكون الحالتان 1 و 2 قريبتين من منحنى الـ Saturation، فإن الخط المستقيم الذي يصل بينهما قد يتقاطع مع منحنى الـ Saturation، وقد تقع الحالة 3 يسار المنحنى. في هذه الحالة، سيتكثف حتمًا بعض الماء أثناء عملية الخلط. هذا يفسر الضباب الذي يتكون أحيانًا عند خلط تيارين رطبين دافئين.</p>
 </div>
 </div>
 </section>
@@ -1489,6 +1513,7 @@ body.nav-active #pb {
     <div class="ucrd-qbox">Saturated air leaving the cooling section at 14&deg;C at 50 m&sup3;/min is mixed adiabatically with outside air at 32&deg;C and 60% RH at 20 m&sup3;/min at 1 atm. Determine the specific humidity, relative humidity, dry-bulb temperature, and volume flow rate of the mixture.</div>
   </div>
   <div class="ucrd-body">
+    <div class="fig" style="max-width:520px;margin:0 auto 18px"><img src="fig14-29_example14-8.png" alt="Figure 14-29: Schematic and psychrometric chart for Example 14-8"><figcaption>FIGURE 14-29: Schematic and psychrometric chart for Example 14-8.</figcaption></div>
     <div class="ucrd-sec ugiven">
       <span class="ucrd-sec-lbl">Given</span>
       <div class="gv-grid"><span>Stream 1: T<sub>1</sub>=14&deg;C, &phi;<sub>1</sub>=100%, V&#775;<sub>1</sub>=50 m&sup3;/min</span>
@@ -1533,6 +1558,7 @@ body.nav-active #pb {
     <div class="ucrd-qbox">Cooling water leaves the condenser at 35&deg;C at 100 kg/s and enters a wet cooling tower. Water is cooled to 22&deg;C by air entering at 1 atm, 20&deg;C, 60% RH and leaving saturated at 30&deg;C. Neglecting fan power, determine (a) the volume flow rate of air and (b) the mass flow rate of makeup water.</div>
   </div>
   <div class="ucrd-body">
+    <div class="fig" style="max-width:400px;margin:0 auto 18px"><img src="fig14-33_cooling_tower.png" alt="Figure 14-33: Schematic for Example 14-9"><figcaption>FIGURE 14-33: Schematic for Example 14-9.</figcaption></div>
     <div class="ucrd-sec ugiven">
       <span class="ucrd-sec-lbl">Given</span>
       <div class="gv-grid"><span>Water: T<sub>3</sub>=35&deg;C, m&#775;<sub>3</sub>=100 kg/s  &rarr;  T<sub>4</sub>=22&deg;C</span>
