@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -1554,50 +1554,288 @@ body.nav-active #pb {
 </div>
 </section>
 
-<!-- ═══ COOLING TOWERS ═══ -->
+
+<!-- ═══ WET COOLING TOWERS — ENHANCED ═══ -->
 <section id="s7f">
 <div class="sc">
-<h3>Wet Cooling Towers</h3>
-<p>الـ <span class="t">Wet Cooling Tower</span> = Evaporative Cooler شبه مغلقة. الماء الدافئ يُرشّ من الأعلى، الهواء يدخل من الأسفل. جزء صغير يتبخر فيبرد الباقي. يُضاف <span class="t">Makeup Water</span> لتعويض المفقود.</p>
-<p>الأنواع: <span class="t2">Forced-Draft</span> (بمروحة) و <span class="t2">Natural-Draft</span> (يعمل بفرق الكثافة — شكل Hyperbolic لأسباب إنشائية، بعضها > 100m ارتفاعًا).</p>
+<h2>Wet Cooling Towers — أبراج التبريد الرطبة</h2>
+
+<div class="ins">
+<div class="ins-t">Quick Overview — إيه هي الـ Wet Cooling Tower؟</div>
+<p>محطات الطاقة وأنظمة التكييف الكبيرة بتنتج كميات ضخمة من الـ <span class="t">Waste Heat</span> اللي لازم نتخلص منها. لو مفيش نهر أو بحيرة قريبة، أو لو التلوث الحراري مشكلة — بنستخدم الـ <span class="t">Wet Cooling Tower</span>. الفكرة بسيطة: الماء الدافئ بيتبرد عن طريق <strong>تبخير جزء صغير منه</strong> في الهواء، والباقي بيرجع بارد يُعاد استخدامه. يعني الماء بيلف في دورة مغلقة والهواء هو اللي بياخد الحرارة.</p>
+</div>
+
+<h3>Theory — كيف يعمل الـ Wet Cooling Tower؟</h3>
+
+<p>الـ <span class="t">Wet Cooling Tower</span> هي عبارة عن <span class="t">Semi-enclosed Evaporative Cooler</span> — يعني مبرد بالتبخير شبه مغلق. المبدأ الفيزيائي بسيط:</p>
+
+<div class="wf">
+<h4>⚙️ آلية العمل — Step by Step</h4>
+<div class="wfs"><div class="wfn">1</div><div class="wft">الماء الدافئ الخارج من الـ <span class="t">Condenser</span> يُضخ لأعلى البرج ويُرشّ عبر <span class="t">Spray Nozzles</span> لتفتيته لقطرات صغيرة — الغرض زيادة مساحة السطح المعرض للهواء.</div></div>
+<div class="wfs"><div class="wfn">2</div><div class="wft">الهواء يدخل من أسفل البرج (أو من الجوانب) ويتحرك لأعلى <strong>عكس اتجاه</strong> سقوط الماء (<span class="t">Counterflow</span>).</div></div>
+<div class="wfs"><div class="wfn">3</div><div class="wft">عند ملامسة الهواء لقطرات الماء، <strong>جزء صغير جداً</strong> من الماء (عادة 2-3%) يتبخر. التبخر يحتاج <span class="t">Latent Heat</span> — وهذه الحرارة بتيجي من الماء نفسه، فالماء المتبقي يبرد.</div></div>
+<div class="wfs"><div class="wfn">4</div><div class="wft">الهواء الخارج من أعلى البرج بتكون درجة حرارته أعلى ومحتواه من الرطوبة أكبر (زادت الـ <span class="t">Temperature</span> وزادت الـ <span class="t">Moisture Content</span>).</div></div>
+<div class="wfs"><div class="wfn">5</div><div class="wft">الماء المبرّد يتجمع في حوض أسفل البرج ويُضخ مرة أخرى للـ Condenser. ولازم نضيف <span class="t">Makeup Water</span> لتعويض الماء المفقود بالتبخر.</div></div>
+</div>
+
+<!-- FIGURE 14-30 -->
+<div class="fig" style="max-width:380px"><img src="fig14-30_induced_draft.png" alt="Figure 14-30: An induced-draft counterflow cooling tower"><figcaption>FIGURE 14-30: An induced-draft counterflow cooling tower — الماء الدافئ يدخل من فوق ويُرشّ، والهواء يدخل من تحت بواسطة مروحة ويخرج من فوق.</figcaption></div>
+
+<div class="exm">
+<div class="exm-t">Exam Thinking — لماذا الرشّ؟</div>
+<p>الرشّ (<span class="t">Spraying</span>) هدفه الأساسي <strong>زيادة مساحة السطح</strong> المعرض للهواء. كل ما القطرات أصغر، كل ما مساحة التلامس مع الهواء أكبر، وبالتالي التبخر أسرع والتبريد أكفأ. تخيل إنك بتعرض كوب ماء مقفول مقارنة بماء مرشوش — الرشّ بيزود السطح آلاف المرات!</p>
+</div>
+
+<h3>Types of Cooling Towers — أنواع أبراج التبريد</h3>
+
+<h4>1. Forced-Draft (Induced-Draft) Cooling Tower</h4>
+<p>هذا النوع يستخدم <span class="t">Fan</span> (مروحة) لسحب الهواء عبر البرج. المروحة ممكن تكون في الأعلى (Induced-Draft) أو في الأسفل (Forced-Draft). هذا النوع أصغر حجمًا وأقل تكلفة في البناء لكنه يحتاج <strong>طاقة كهربائية</strong> لتشغيل المروحة.</p>
+
+<h4>2. Natural-Draft Cooling Tower</h4>
+<p>يعمل بنفس مبدأ الـ <span class="t">Chimney</span> (المدخنة). الهواء داخل البرج يحتوي على <span class="t">Water Vapor</span> كثير — وبما أن بخار الماء أخف من الهواء الجاف (الـ Molecular Weight للـ H₂O = 18 أقل من الـ Air ≈ 29)، فالهواء الرطب الدافئ <strong>يصعد تلقائياً</strong> والهواء البارد الخارجي يدخل من الأسفل ليحل محله. لا يحتاج طاقة خارجية لكن تكلفة البناء عالية جداً.</p>
+
+<!-- FIGURE 14-31 -->
+<div class="fig" style="max-width:380px"><img src="fig14-31_natural_draft.png" alt="Figure 14-31: Two natural draft cooling towers on a roadside"><figcaption>FIGURE 14-31: Natural-draft cooling towers — الشكل الـ Hyperbolic للقوة الإنشائية وليس لأسباب حرارية. بعضها يتجاوز 100 متر ارتفاعاً!</figcaption></div>
+
+<div class="note">
+<div class="note-title">📝 ليه الشكل Hyperbolic؟</div>
+الشكل القطعي الزائد (<span class="t">Hyperbolic Profile</span>) للأبراج الطبيعية هو <strong>لأسباب إنشائية فقط</strong> — يعطي أقصى قوة هيكلية بأقل كمية مواد. <strong>مفيش أي سبب ثرموديناميكي</strong> لهذا الشكل.
+</div>
+
+<div class="common-mistake">
+<div class="cm-title">⚠️ Common Mistake — خلط أنواع الأبراج</div>
+<p>كثير من الطلاب يخلطوا بين Forced-Draft و Natural-Draft. تذكر: لو فيه <strong>مروحة</strong> = Forced/Induced-Draft. لو فيه <strong>شكل مدخنة ضخمة</strong> بدون مروحة = Natural-Draft. في الامتحان، لو المسألة قالت "neglecting fan power" يعني الطاقة اللي بتشغل المروحة مش داخلة في الحسابات — مش معناها إنه natural-draft.</p>
+</div>
+
+<h3>Analysis — التحليل الحراري للـ Cooling Tower</h3>
+
+<p>لتحليل الـ Cooling Tower، نطبق <strong>ثلاث معادلات أساسية</strong> على الـ System ككل (البرج بالكامل كـ Control Volume):</p>
+
+<div class="t3-highlight">
+<div class="t3-title">🔑 فهم الـ Temperatures والـ Streams في الـ Cooling Tower</div>
+<p style="font-size:14.5px;line-height:1.85;">قبل ما نبدأ في المعادلات، لازم نفهم كل رقم ومعناه:</p>
+<div class="t3-step"><div class="t3-step-n">1</div><div class="t3-step-body"><strong>State 1 (Air Inlet):</strong> الهواء الداخل من أسفل البرج — نعرف $T_1$, $\phi_1$ ومنهم نقرأ $h_1$, $\psi_1$, $v_1$ من الـ Psychrometric Chart.</div></div>
+<div class="t3-step"><div class="t3-step-n">2</div><div class="t3-step-body"><strong>State 2 (Air Exit):</strong> الهواء الخارج من أعلى البرج — عادةً Saturated ($\phi_2 = 100\%$) عند $T_2$. نقرأ $h_2$, $\psi_2$ من الـ Chart.</div></div>
+<div class="t3-step"><div class="t3-step-n">3</div><div class="t3-step-body"><strong>State 3 (Warm Water In):</strong> الماء الدافئ الداخل من أعلى — Saturated Liquid عند $T_3$. الـ $h_3 = h_{f@T_3}$ من Table A-4.</div></div>
+<div class="t3-step"><div class="t3-step-n">4</div><div class="t3-step-body"><strong>State 4 (Cool Water Out):</strong> الماء المبرّد الخارج من أسفل — Saturated Liquid عند $T_4$. الـ $h_4 = h_{f@T_4}$ من Table A-4.</div></div>
+<div class="t3-step"><div class="t3-step-n">5</div><div class="t3-step-body"><strong>Makeup Water:</strong> الماء التعويضي = الماء اللي تبخر. كتلته = $\dot{m}_a(\psi_2 - \psi_1)$ ودخوله عند $T_4$ (لأنه بيتضاف في الحوض السفلي).</div></div>
+</div>
+
+<h4>Balance Equations — معادلات الميزان</h4>
+
+<div class="eq">$$\textbf{Dry Air Mass Balance:}\quad \dot{m}_{a1} = \dot{m}_{a2} = \dot{m}_a$$<span class="eq-l">الهواء الجاف لا يتبخر — كتلته ثابتة</span></div>
+
+<p><strong>ليه؟</strong> الـ Dry Air مش بيتبخر ومش بيتكثف — هو مجرد ناقل. اللي بيتغير هو كمية الـ Water Vapor اللي محمولة فيه. فكتلة الـ Dry Air داخل = كتلة الـ Dry Air خارج.</p>
+
+<div class="eq">$$\textbf{Water Mass Balance:}\quad \dot{m}_3 + \dot{m}_a\psi_1 = \dot{m}_4 + \dot{m}_a\psi_2$$<span class="eq-l">ميزان كتلة الماء (سائل + بخار)</span></div>
+
+<p><strong>ليه الشكل ده؟</strong> الماء داخل من مصدرين: ماء سائل من فوق ($\dot{m}_3$) وبخار ماء محمول في الهواء ($\dot{m}_a\psi_1$). والماء خارج من مصدرين: ماء سائل من تحت ($\dot{m}_4$) وبخار ماء محمول في الهواء الخارج ($\dot{m}_a\psi_2$). بإعادة الترتيب:</p>
+
+<div class="eq">$$\dot{m}_3 - \dot{m}_4 = \dot{m}_a(\psi_2 - \psi_1) = \dot{m}_{makeup}$$<span class="eq-l">الفرق بين ماء الدخول والخروج = الماء المتبخر = Makeup Water</span></div>
+
+<div class="ins">
+<div class="ins-t">Concept Insight — معنى Makeup Water</div>
+<p>الـ <span class="t">Makeup Water</span> هو ببساطة الماء اللي "فقدناه" للهواء عن طريق التبخر. لازم نعوضه عشان الدورة تفضل مستمرة. كميته = $\dot{m}_a(\psi_2 - \psi_1)$ — يعني كتلة الهواء الجاف × الزيادة في الـ Specific Humidity.</p>
+</div>
+
+<div class="eq">$$\textbf{Energy Balance:}\quad \dot{m}_a h_1 + \dot{m}_3 h_3 = \dot{m}_a h_2 + \dot{m}_4 h_4$$<span class="eq-l">ميزان الطاقة (الـ Tower معزول — Adiabatic)</span></div>
+
+<p><strong>ليه Adiabatic؟</strong> البرج <strong>مفيش فيه تسخين أو تبريد خارجي</strong>. كل اللي بيحصل هو تبادل حراري بين الماء والهواء داخل البرج نفسه. لذلك الطاقة الداخلة = الطاقة الخارجة (بإهمال الـ Fan Power).</p>
+
+<p>بالتعويض بـ $\dot{m}_4 = \dot{m}_3 - \dot{m}_{makeup}$ وحل المعادلة للحصول على $\dot{m}_a$:</p>
+
+<div class="eq" style="background:linear-gradient(135deg,#e8f0ed,#d4e8de);border-left:4px solid #1b5e4b;border:2px solid #1b5e4b;border-radius:8px;padding:16px 20px;">$$\boxed{\dot{m}_a = \frac{\dot{m}_3(h_3 - h_4)}{(h_2 - h_1) - (\psi_2 - \psi_1)\,h_4}}$$<span class="eq-l" style="color:#1b5e4b;font-weight:600;">★ المعادلة الرئيسية — Main Cooling Tower Equation</span></div>
+
+<div class="ana">
+<div class="ana-t">🔧 Derivation — اشتقاق المعادلة الرئيسية</div>
+<p style="direction:ltr;font-size:14px;line-height:1.9;">
+Starting from Energy Balance:<br>
+$\dot{m}_a h_1 + \dot{m}_3 h_3 = \dot{m}_a h_2 + \dot{m}_4 h_4$<br><br>
+Substitute $\dot{m}_4 = \dot{m}_3 - \dot{m}_{makeup} = \dot{m}_3 - \dot{m}_a(\psi_2-\psi_1)$:<br>
+$\dot{m}_a h_1 + \dot{m}_3 h_3 = \dot{m}_a h_2 + [\dot{m}_3 - \dot{m}_a(\psi_2-\psi_1)]\,h_4$<br><br>
+Expand:<br>
+$\dot{m}_a h_1 + \dot{m}_3 h_3 = \dot{m}_a h_2 + \dot{m}_3 h_4 - \dot{m}_a(\psi_2-\psi_1)h_4$<br><br>
+Collect $\dot{m}_a$ terms:<br>
+$\dot{m}_3(h_3 - h_4) = \dot{m}_a[h_2 - h_1 - (\psi_2-\psi_1)h_4]$<br><br>
+$\therefore \dot{m}_a = \dfrac{\dot{m}_3(h_3 - h_4)}{(h_2 - h_1) - (\psi_2-\psi_1)h_4}$
+</p>
+</div>
+
+<div class="common-mistake">
+<div class="cm-title">⚠️ Common Mistake — الخلط بين h₃, h₄ و h₁, h₂</div>
+<p>$h_3$ و $h_4$ هي enthalpies للـ <strong>Liquid Water</strong> (من Table A-4 كـ $h_f$). بينما $h_1$ و $h_2$ هي enthalpies للـ <strong>Moist Air</strong> (من Psychrometric Chart وتشمل الـ Dry Air + Water Vapor). <strong>لا تخلطهم!</strong> الوحدات مختلفة: الماء بـ kJ/kg water، والهواء بـ kJ/kg dry air.</p>
+</div>
+
+<!-- EXAM TRICKS -->
+<div class="exm">
+<div class="exm-t">🎯 Exam Tricks — نصائح سريعة للامتحان</div>
+<p>• لو المسألة قالت "neglecting fan power" — يعني Energy Balance بتكون بسيطة: $\sum \dot{m}h_{in} = \sum \dot{m}h_{out}$.<br>
+• الـ Volume Flow Rate = $\dot{V}_1 = \dot{m}_a \times v_1$ (مش $v_2$!) — لأننا عادةً نحتاج حجم الهواء <strong>الداخل</strong>.<br>
+• الـ Makeup Water دائماً أقل بكثير من $\dot{m}_3$ (عادة 2-3% فقط) — لو طلعت نتيجة كبيرة راجع حساباتك.<br>
+• تأكد إن $\psi_2 > \psi_1$ دائماً (الهواء الخارج أرطب) وإلا في خطأ.</p>
+</div>
+
 </div>
 </section>
 
-<!-- ═══ EXAMPLE 14-9 ═══ -->
+
+<!-- ═══ EXAMPLE 14-9 — ENHANCED ═══ -->
 <section id="s-ex9">
 <div class="ucrd">
   <div class="ucrd-banner ucrd-ch">
     <div class="ucrd-tag">EXAMPLE 14-9  ·  Chapter 14</div>
     <div class="ucrd-title">Cooling of a Power Plant by a Cooling Tower</div>
-    <div class="ucrd-qbox">Cooling water leaves the condenser at 35&deg;C at 100 kg/s and enters a wet cooling tower. Water is cooled to 22&deg;C by air entering at 1 atm, 20&deg;C, 60% RH and leaving saturated at 30&deg;C. Neglecting fan power, determine (a) the volume flow rate of air and (b) the mass flow rate of makeup water.</div>
+    <div class="ucrd-qbox">Cooling water leaves the condenser of a power plant and enters a wet cooling tower at 35&deg;C at a rate of 100 kg/s. Water is cooled to 22&deg;C in the cooling tower by air that enters the tower at 1 atm, 20&deg;C, and 60 percent relative humidity and leaves saturated at 30&deg;C. Neglecting the power input to the fan, determine (a) the volume flow rate of air into the cooling tower and (b) the mass flow rate of the required makeup water.</div>
   </div>
   <div class="ucrd-body">
-    <div class="fig" style="max-width:400px;margin:0 auto 18px"><img src="fig14-33_cooling_tower.png" alt="Figure 14-33: Schematic for Example 14-9"><figcaption>FIGURE 14-33: Schematic for Example 14-9.</figcaption></div>
+    <div class="fig" style="max-width:400px;margin:0 auto 18px"><img src="fig14-33_cooling_tower.png" alt="Figure 14-33: Schematic for Example 14-9"><figcaption>FIGURE 14-33: Schematic for Example 14-9 — الأرقام 1,2 للهواء و 3,4 للماء.</figcaption></div>
+
+    <div class="ins">
+    <div class="ins-t">💡 فهم المسألة — قبل ما تمسك القلم</div>
+    <p>عندنا <strong>ماء دافئ</strong> (35°C) خارج من condenser محطة طاقة بمعدل 100 kg/s. المطلوب تبريده لـ 22°C باستخدام cooling tower. <strong>الهواء</strong> بيدخل من تحت (20°C, 60% RH) وبيخرج من فوق مشبع (saturated) عند 30°C. المسألة بتقول "neglecting fan power" — يعني الـ tower مثالي (adiabatic + no work).</p>
+    </div>
+
     <div class="ucrd-sec ugiven">
       <span class="ucrd-sec-lbl">Given</span>
-      <div class="gv-grid"><span>Water: T<sub>3</sub>=35&deg;C, m&#775;<sub>3</sub>=100 kg/s  &rarr;  T<sub>4</sub>=22&deg;C</span>
+      <div class="gv-grid"><span>Water in: T<sub>3</sub>=35&deg;C, ṁ<sub>3</sub>=100 kg/s</span>
+<span>Water out: T<sub>4</sub>=22&deg;C</span>
 <span>Air in: 1 atm, T<sub>1</sub>=20&deg;C, &phi;<sub>1</sub>=60%</span>
-<span>Air out: saturated at T<sub>2</sub>=30&deg;C</span>
-<span>h<sub>1</sub>=42.2, h<sub>2</sub>=100.0 kJ/kg</span>
-<span>&psi;<sub>1</sub>=0.0087, &psi;<sub>2</sub>=0.0273 kg/kg, v<sub>1</sub>=0.842 m&sup3;/kg</span>
-<span>h<sub>f@22</sub>=92.28, h<sub>f@35</sub>=146.64 kJ/kg</span></div>
+<span>Air out: saturated (&phi;<sub>2</sub>=100%) at T<sub>2</sub>=30&deg;C</span></div>
     </div>
+
+    <div class="note">
+    <div class="note-title">📝 من أين جاءت القيم؟</div>
+    من <strong>Psychrometric Chart</strong> عند الحالة 1 (20°C, 60% RH):<br>
+    $h_1 = 42.2$ kJ/kg dry air, $\psi_1 = 0.0087$ kg H₂O/kg dry air, $v_1 = 0.842$ m³/kg dry air<br><br>
+    من <strong>Psychrometric Chart</strong> عند الحالة 2 (30°C, saturated):<br>
+    $h_2 = 100.0$ kJ/kg dry air, $\psi_2 = 0.0273$ kg H₂O/kg dry air<br><br>
+    من <strong>Table A-4</strong> (Saturated Water — Temperature Table):<br>
+    $h_{f@22°C} = 92.28$ kJ/kg (= $h_4$), &nbsp; $h_{f@35°C} = 146.64$ kJ/kg (= $h_3$)
+    </div>
+
     <div class="ucrd-sec ureq">
       <span class="ucrd-sec-lbl">Required</span>
-      <div class="req-line">Find: &nbsp;(a) V&#775;<sub>1</sub> [m&sup3;/s] &nbsp;&nbsp;(b) m&#775;<sub>makeup</sub> [kg/s]</div>
+      <div class="req-line">Find: &nbsp;(a) V̇<sub>1</sub> [m³/s] — Volume flow rate of air &nbsp;&nbsp;(b) ṁ<sub>makeup</sub> [kg/s] — Makeup water</div>
     </div>
+
     <div class="ucrd-sec usol">
-      <span class="ucrd-sec-lbl">Solution</span>
-      <div class="sol-math"><div class="eq">$$\dot{m}_a = \frac{\dot{m}_3(h_3-h_4)}{(h_2-h_1)-(\psi_2-\psi_1)\,h_4}$$</div><div class="eq">$$= \frac{100(146.64-92.28)}{(100.0-42.2)-(0.0273-0.0087)(92.28)} = \frac{5436}{57.8-1.716} = \frac{5436}{56.08} = 96.9\ \text{kg/s}$$</div><span class="sol-part">(a)</span><div class="eq">$$\dot{V}_1 = \dot{m}_a\,v_1 = (96.9)(0.842) = \boxed{81.6\ \text{m}^3/\text{s}}$$</div><span class="sol-part">(b)</span><div class="eq">$$\dot{m}_{makeup} = \dot{m}_a(\psi_2-\psi_1) = (96.9)(0.0273-0.0087) = (96.9)(0.0186) = \boxed{1.80\ \text{kg/s}}$$</div></div>
+      <span class="ucrd-sec-lbl">Solution — الحل خطوة بخطوة</span>
+      <div class="sol-math">
+
+<p style="direction:rtl;font-size:14.5px;margin:8px 0;color:#1b5e4b;font-weight:600;">الخطوة 1: كتابة Assumptions</p>
+<p style="direction:rtl;font-size:14px;line-height:1.85;margin:4px 0 12px;">
+• Steady operating conditions (كتلة الـ Dry Air ثابتة طوال العملية)<br>
+• Dry Air و Water Vapor كـ Ideal Gases<br>
+• التغيرات في Kinetic و Potential Energy مهملة<br>
+• الـ Cooling Tower معزول حرارياً (Adiabatic) — لا حرارة داخلة أو خارجة<br>
+• Fan Power مهملة (كما ذُكر في المسألة)
+</p>
+
+<p style="direction:rtl;font-size:14.5px;margin:8px 0;color:#1b5e4b;font-weight:600;">الخطوة 2: تطبيق الـ Mass Balances</p>
+
+<p style="direction:rtl;font-size:14px;margin:4px 0;">Dry Air: $\dot{m}_{a1} = \dot{m}_{a2} = \dot{m}_a$ (الهواء الجاف مش بيتغير)</p>
+
+<p style="direction:rtl;font-size:14px;margin:4px 0;">Water: $\dot{m}_3 + \dot{m}_a\psi_1 = \dot{m}_4 + \dot{m}_a\psi_2$</p>
+<p style="direction:rtl;font-size:14px;margin:4px 0;">∴ $\dot{m}_3 - \dot{m}_4 = \dot{m}_a(\psi_2 - \psi_1) = \dot{m}_{makeup}$</p>
+
+<p style="direction:rtl;font-size:14.5px;margin:12px 0 8px;color:#1b5e4b;font-weight:600;">الخطوة 3: تطبيق الـ Energy Balance</p>
+
+<div class="eq">$$\dot{m}_a h_1 + \dot{m}_3 h_3 = \dot{m}_a h_2 + \dot{m}_4 h_4$$</div>
+
+<p style="direction:rtl;font-size:14px;margin:4px 0;">بالتعويض بـ $\dot{m}_4 = \dot{m}_3 - \dot{m}_a(\psi_2 - \psi_1)$:</p>
+
+<div class="eq">$$\dot{m}_a h_1 + \dot{m}_3 h_3 = \dot{m}_a h_2 + [\dot{m}_3 - \dot{m}_a(\psi_2-\psi_1)] h_4$$</div>
+
+<p style="direction:rtl;font-size:14px;margin:4px 0;">بعد الترتيب وحل المعادلة لإيجاد $\dot{m}_a$:</p>
+
+<div class="eq">$$\dot{m}_a = \frac{\dot{m}_3(h_3 - h_4)}{(h_2 - h_1) - (\psi_2 - \psi_1)\,h_4}$$</div>
+
+<p style="direction:rtl;font-size:14.5px;margin:12px 0 8px;color:#1b5e4b;font-weight:600;">الخطوة 4: التعويض بالأرقام</p>
+
+<p style="direction:ltr;font-size:14px;margin:4px 0;"><strong>Numerator:</strong></p>
+<div class="eq">$$\dot{m}_3(h_3 - h_4) = 100 \times (146.64 - 92.28) = 100 \times 54.36 = 5436\ \text{kJ/s}$$</div>
+
+<p style="direction:ltr;font-size:14px;margin:4px 0;"><strong>Denominator:</strong></p>
+<div class="eq">$$(h_2 - h_1) - (\psi_2 - \psi_1)\,h_4$$</div>
+<div class="eq">$$= (100.0 - 42.2) - (0.0273 - 0.0087) \times 92.28$$</div>
+<div class="eq">$$= 57.8 - (0.0186)(92.28) = 57.8 - 1.716 = 56.08\ \text{kJ/kg}$$</div>
+
+<p style="direction:ltr;font-size:14px;margin:4px 0;"><strong>Therefore:</strong></p>
+<div class="eq">$$\dot{m}_a = \frac{5436}{56.08} = \boxed{96.9\ \text{kg/s}}$$</div>
+
+<span class="sol-part">(a)</span>
+<p style="direction:rtl;font-size:14.5px;margin:8px 0;color:#b34a1e;font-weight:600;">الخطوة 5: حساب Volume Flow Rate</p>
+<p style="direction:rtl;font-size:14px;margin:4px 0;">الـ Volume Flow Rate عند <strong>المدخل</strong> (State 1) = $\dot{m}_a \times v_1$:</p>
+<div class="eq">$$\dot{V}_1 = \dot{m}_a \times v_1 = 96.9 \times 0.842 = \boxed{81.6\ \text{m}^3/\text{s}}$$</div>
+
+<span class="sol-part">(b)</span>
+<p style="direction:rtl;font-size:14.5px;margin:8px 0;color:#b34a1e;font-weight:600;">الخطوة 6: حساب Makeup Water</p>
+<p style="direction:rtl;font-size:14px;margin:4px 0;">من الـ Water Mass Balance:</p>
+<div class="eq">$$\dot{m}_{makeup} = \dot{m}_a(\psi_2 - \psi_1) = 96.9 \times (0.0273 - 0.0087)$$</div>
+<div class="eq">$$= 96.9 \times 0.0186 = \boxed{1.80\ \text{kg/s}}$$</div>
+
+      </div>
     </div>
+
+    <div class="common-mistake">
+    <div class="cm-title">⚠️ Common Mistake — استخدام v₂ بدل v₁</div>
+    <p>بعض الطلاب يستخدموا $v_2$ لحساب الـ Volume Flow Rate. الـ $v_1$ هو الـ Specific Volume عند <strong>المدخل</strong> — وده اللي بنستخدمه لأن السؤال سأل عن volume flow rate of air <strong>into</strong> the tower.</p>
+    </div>
+
+    <div class="note">
+    <div class="note-title">📝 Discussion — ملاحظة مهمة</div>
+    لاحظ إن $\dot{m}_{makeup} = 1.80$ kg/s بينما $\dot{m}_3 = 100$ kg/s. يعني <strong>أقل من 2%</strong> من الماء اتبخر! ده معناه إن <strong>أكثر من 98%</strong> من الماء بيترجع ويُعاد استخدامه في الدورة. هذا يوضح كفاءة أبراج التبريد — تبخير كمية صغيرة جداً كافي لتبريد الباقي.
+    </div>
+
     <div class="ucrd-sec uans">
       <span class="ucrd-sec-lbl">Final Answer</span>
-      <div class="ans-grid"><div class="ans-row">(a) V&#775;<sub>1</sub>=81.6 m&sup3;/s</div>
-<div class="ans-row">(b) m&#775;<sub>makeup</sub>=1.80 kg/s  (&gt;98% of water recycled)</div></div>
+      <div class="ans-grid"><div class="ans-row">(a) V̇<sub>1</sub> = 81.6 m³/s</div>
+<div class="ans-row">(b) ṁ<sub>makeup</sub> = 1.80 kg/s  (&gt;98% of water recycled)</div></div>
     </div>
   </div>
 </div>
 </section>
+
+<!-- ═══ WET COOLING TOWERS — MINI SUMMARY ═══ -->
+<section id="s7f-summary">
+<div class="sc" style="background:linear-gradient(135deg,#eaf1f7,#e3f2fd);border:2px solid #1a4a6e;">
+<h3 style="border-left-color:#1a4a6e;color:#1a4a6e;">📋 Mini Summary — ملخص سريع لقسم Wet Cooling Towers</h3>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;">
+<div style="background:#fff;border-radius:8px;padding:14px 16px;border:1px solid #c4d5e3;">
+<p style="font:700 13px/1.3 'Source Serif 4',serif;color:#1a4a6e;margin-bottom:8px;direction:ltr;">🏗️ What is it?</p>
+<p style="font-size:13.5px;margin:0;">مبرد بالتبخير شبه مغلق — يبرد الماء بتبخير جزء صغير منه في الهواء</p>
+</div>
+<div style="background:#fff;border-radius:8px;padding:14px 16px;border:1px solid #c4d5e3;">
+<p style="font:700 13px/1.3 'Source Serif 4',serif;color:#1a4a6e;margin-bottom:8px;direction:ltr;">🔄 Types</p>
+<p style="font-size:13.5px;margin:0;">Forced-Draft (مروحة) — أصغر وأرخص<br>Natural-Draft (مدخنة) — أكبر وأغلى</p>
+</div>
+<div style="background:#fff;border-radius:8px;padding:14px 16px;border:1px solid #c4d5e3;">
+<p style="font:700 13px/1.3 'Source Serif 4',serif;color:#1a4a6e;margin-bottom:8px;direction:ltr;">📐 Key Equation</p>
+<p style="font-size:13px;margin:0;direction:ltr;">$\dot{m}_a = \dfrac{\dot{m}_3(h_3-h_4)}{(h_2-h_1)-(\psi_2-\psi_1)h_4}$</p>
+</div>
+<div style="background:#fff;border-radius:8px;padding:14px 16px;border:1px solid #c4d5e3;">
+<p style="font:700 13px/1.3 'Source Serif 4',serif;color:#1a4a6e;margin-bottom:8px;direction:ltr;">💧 Makeup Water</p>
+<p style="font-size:13.5px;margin:0;direction:ltr;">$\dot{m}_{makeup} = \dot{m}_a(\psi_2 - \psi_1)$<br><span style="font-size:12.5px;color:#666;">عادة 2-3% فقط من الماء الكلي</span></p>
+</div>
+</div>
+
+<div class="exm" style="margin-top:14px;">
+<div class="exm-t">🎯 نقاط مهمة للامتحان</div>
+<p style="font-size:13.5px;line-height:1.85;">
+✅ الـ Tower يُعتبر <strong>Adiabatic</strong> — مفيش $\dot{Q}$ داخل أو خارج<br>
+✅ $h_3, h_4$ من <strong>Table A-4</strong> كـ $h_f$ (ماء سائل)<br>
+✅ $h_1, h_2, \psi_1, \psi_2, v_1$ من <strong>Psychrometric Chart</strong><br>
+✅ Volume Flow Rate = $\dot{m}_a \times v_1$ (عند <strong>المدخل</strong>)<br>
+✅ لو الهواء الخارج saturated → $\phi_2 = 100\%$<br>
+✅ الـ Fan Power عادة تُهمل في المسائل الأساسية
+</p>
+</div>
+
+</div>
+</section>
+
+
 
 <!-- ═══════════════════════════════════════════════ -->
 <!--  GLOSSARY                                        -->
