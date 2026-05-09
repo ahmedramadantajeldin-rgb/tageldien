@@ -157,6 +157,20 @@ p{margin-bottom:13px;text-align:justify}
 .hl{background:rgba(27,94,75,.1);border-radius:3px;padding:1px 5px;font-family:'Fira Code',monospace;font-size:14px}
 .sep{height:1px;background:var(--border);margin:20px 0}
 
+/* ── T3 Highlight Box ── */
+.t3-highlight{background:linear-gradient(135deg,#e3f2fd,#bbdefb);border:2px solid #1a4a6e;border-radius:12px;padding:22px 26px;margin:20px 0;position:relative;box-shadow:0 4px 16px rgba(26,74,110,.12)}
+.t3-highlight::before{content:'🔑';position:absolute;top:-14px;left:18px;font-size:22px;background:#fff;border:2px solid #1a4a6e;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+.t3-highlight .t3-title{font:700 15px/1.3 'Playfair Display',serif;color:#1a4a6e;margin:6px 0 14px;padding-bottom:8px;border-bottom:2px dashed #90caf9;direction:ltr}
+.t3-highlight .t3-step{display:flex;align-items:flex-start;gap:12px;margin:10px 0}
+.t3-highlight .t3-step-n{background:#1a4a6e;color:#fff;min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 12px 'Fira Code',monospace;flex-shrink:0;margin-top:2px}
+.t3-highlight .t3-step-body{flex:1;font-size:15px;line-height:1.85}
+.t3-highlight .eq{background:rgba(255,255,255,.7);border-left:4px solid #1a4a6e}
+
+/* ── Common Mistake Warning ── */
+.common-mistake{background:linear-gradient(135deg,#fff3e0,#ffe0b2);border:2px solid #e65100;border-radius:var(--r);padding:18px 22px 18px 48px;margin:16px 0;position:relative;font-size:14.5px;line-height:1.8}
+.common-mistake::before{content:'⚠️';position:absolute;top:16px;left:14px;font-size:18px}
+.common-mistake .cm-title{font:700 13px/1 'Fira Code',monospace;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;color:#bf360c;direction:ltr}
+
 /* ── Fixed float buttons ── */
 .fn{position:fixed;bottom:22px;right:22px;display:flex;flex-direction:column;gap:6px;z-index:998;opacity:0;transition:opacity .3s;pointer-events:none}
 .fn.show{opacity:1;pointer-events:auto}
@@ -1980,6 +1994,7 @@ body.nav-active #pb {
     <div class="ucrd-qbox">1000 m&sup3; of atmospheric air at <strong>1 atm</strong>, <strong>32&deg;C</strong>, <strong>95% RH</strong> is to be cooled to <strong>24&deg;C</strong> and <strong>60% RH</strong> using an ideal vapor-compression refrigeration cycle with R-134a. Evaporator at 4&deg;C; condenser saturation temperature = 39.4&deg;C. Calculate (a) the cooling coil capacity in kJ and (b) total entropy generation in the evaporator.</div>
   </div>
   <div class="ucrd-body">
+    <div class="fig" style="margin:0 0 18px;"><img src="q11_refrigeration_cycle.png" alt="FIGURE — Vapor-Compression Refrigeration Cycle cooling air from 32°C/95%RH to 24°C/60%RH" style="max-width:420px;"><figcaption style="font-size:12px;color:#999;margin-top:6px;direction:ltr">Schematic: Vapor-compression refrigeration system cooling atmospheric air from 32°C, 95% RH to 24°C, 60% RH.</figcaption></div>
     <div class="ucrd-sec ugiven">
       <span class="ucrd-sec-lbl">Given</span>
       <div class="gv-grid"><span>V<sub>room</sub>=1000 m&sup3;, P=1 atm</span>
@@ -2017,6 +2032,7 @@ body.nav-active #pb {
     <div class="ucrd-qbox">Humid air at <strong>1 atm</strong>, <strong>39°C dry bulb</strong>, <strong>50% RH</strong> is conditioned to <strong>17°C dry bulb</strong> and <strong>T<sub>wb</sub> = 10.8°C</strong>. Air passes over cooling coils (removing all necessary moisture), then over heating coils to reach the final state. <em>(a)</em> Sketch the psychrometric diagram. <em>(b)</em> Dew point temperatures at each coil inlet. <em>(c)</em> Net heat transfer in kJ/kg dry air.</div>
   </div>
   <div class="ucrd-body">
+    <div class="fig" style="margin:0 0 18px;"><img src="q12_cooling_heating_coils.png" alt="FIGURE — Air conditioning system with cooling coils then heating coils. T₁=39°C, φ₁=50% → T₂=17°C, Twb2=10.8°C" style="max-width:480px;"><figcaption style="font-size:12px;color:#999;margin-top:6px;direction:ltr">Schematic: Air enters at T₁=39°C, φ₁=50%, passes through cooling coils (with condensate removal), then heating coils to reach T₂=17°C, T<sub>wb2</sub>=10.8°C.</figcaption></div>
     <div class="ucrd-sec ugiven">
       <span class="ucrd-sec-lbl">Given</span>
       <div class="gv-grid"><span>Stream 1: T<sub>1</sub>=12&deg;C, &phi;<sub>1</sub>=90%, V&#775;<sub>1</sub>=500 m&sup3;/min</span>
@@ -2033,6 +2049,71 @@ body.nav-active #pb {
       <span class="ucrd-sec-lbl">Solution</span>
       <div class="sol-math"><div class="eq">$$\dot{m}_{a1}=\frac{500}{0.8139}=614.3\ \text{kg/min},\quad \dot{m}_{a2}=\frac{500}{0.8706}=574.3\ \text{kg/min}$$</div><div class="eq">$$\dot{m}_{a3}=614.3+574.3=1188.6\ \text{kg/min}$$</div><div class="eq">$$\psi_3=\frac{\dot{m}_{a1}\psi_1+\dot{m}_{a2}\psi_2}{\dot{m}_{a3}}=\frac{(614.3)(0.00783)+(574.3)(0.00856)}{1188.6}$$</div><div class="eq">$$=\frac{4.810+4.916}{1188.6}=\frac{9.726}{1188.6}=\boxed{0.00818\ \text{kg/kg}}$$</div><div class="eq">$$h_3=\frac{(614.3)(28.0)+(574.3)(50.4)}{1188.6}=\frac{17200+28944.7}{1188.6}=\frac{46145}{1188.6}=\boxed{38.8\ \text{kJ/kg}}$$</div><p style="direction:ltr;font-size:13px;margin:4px 0;">From chart with &psi;<sub>3</sub>=0.00818 and h<sub>3</sub>=38.8 kJ/kg:</p><div class="eq">$$T_3=\boxed{19.0°C},\quad \phi_3=\boxed{58\%},\quad v_3=0.8422\ \text{m}^3/\text{kg}$$</div><div class="eq">$$\dot{V}_3=\dot{m}_{a3}\,v_3=(1188.6)(0.8422)=\boxed{1001\ \text{m}^3/\text{min}}$$</div></div>
     </div>
+
+    <!-- ═══ T3 DETAILED EXPLANATION ═══ -->
+    <div class="t3-highlight">
+      <div class="t3-title">🔍 How to Find T₃ — Step-by-Step Explanation | إزاي نحسب T₃</div>
+
+      <p style="direction:rtl;text-align:right;margin-bottom:14px;font-size:15px;line-height:1.9;">
+السؤال هنا: <strong>إزاي نوصل لقيمة T₃ (درجة حرارة الخليط)؟</strong><br>
+الفكرة إننا عندنا تيارين هوا بيتخلطوا <strong>adiabatically</strong> (من غير أي حرارة داخلة أو خارجة).<br>
+يعني الـ <strong>Energy Balance</strong> بيقول إن مجموع الـ enthalpy الداخلة = الـ enthalpy الخارجة.
+      </p>
+
+      <div class="t3-step">
+        <div class="t3-step-n">1</div>
+        <div class="t3-step-body" style="direction:rtl;text-align:right;">
+          <strong>أول حاجة:</strong> نحسب <span class="hl">ṁ<sub>a1</sub></span> و <span class="hl">ṁ<sub>a2</sub></span> — معدل تدفق الـ Dry Air لكل تيار:<br>
+          <span style="direction:ltr;display:inline-block;">ṁ<sub>a</sub> = V̇ / v</span> &nbsp;(Volume Flow Rate ÷ Specific Volume من الـ Psychrometric Chart)
+          <div class="eq" style="margin:8px 0;">$$\dot{m}_{a1}=\frac{500}{0.8139}=614.3\ \text{kg/min},\quad \dot{m}_{a2}=\frac{500}{0.8706}=574.3\ \text{kg/min}$$</div>
+        </div>
+      </div>
+
+      <div class="t3-step">
+        <div class="t3-step-n">2</div>
+        <div class="t3-step-body" style="direction:rtl;text-align:right;">
+          <strong>ثاني حاجة:</strong> نحسب <span class="hl">ψ₃</span> و <span class="hl">h₃</span> — بنستخدم معادلتين الـ <strong>Mass Balance</strong> و <strong>Energy Balance</strong>:<br>
+          <em style="color:#1a4a6e;">ليه المعادلتين دول؟</em> لأن الخلط Adiabatic → لا حرارة ولا شغل → مجموع الكتل والطاقة محفوظ.
+          <div class="eq" style="margin:8px 0;">$$\psi_3 = \frac{\dot{m}_{a1}\psi_1 + \dot{m}_{a2}\psi_2}{\dot{m}_{a1} + \dot{m}_{a2}} = \frac{(614.3)(0.00783)+(574.3)(0.00856)}{1188.6} = 0.00818\ \text{kg/kg}$$</div>
+          <div class="eq" style="margin:8px 0;">$$h_3 = \frac{\dot{m}_{a1}h_1 + \dot{m}_{a2}h_2}{\dot{m}_{a1} + \dot{m}_{a2}} = \frac{(614.3)(28.0)+(574.3)(50.4)}{1188.6} = 38.8\ \text{kJ/kg}$$</div>
+        </div>
+      </div>
+
+      <div class="t3-step">
+        <div class="t3-step-n">3</div>
+        <div class="t3-step-body" style="direction:rtl;text-align:right;">
+          <strong>ثالث حاجة:</strong> نروح للـ <strong>Psychrometric Chart</strong> ونلاقي النقطة اللي عندها:<br>
+          <span class="hl">ψ₃ = 0.00818 kg/kg</span> (خط أفقي) و <span class="hl">h₃ = 38.8 kJ/kg</span> (خط مائل)<br>
+          تقاطع الخطين دول بيدينا <strong>State 3</strong> → ومنها نقرأ:
+          <div class="eq" style="margin:8px 0;">$$\boxed{T_3 = 19.0°C}, \quad \boxed{\phi_3 = 58\%}, \quad v_3 = 0.8422\ \text{m}^3/\text{kg}$$</div>
+        </div>
+      </div>
+
+      <div class="t3-step">
+        <div class="t3-step-n">4</div>
+        <div class="t3-step-body" style="direction:rtl;text-align:right;">
+          <strong>أخيرًا:</strong> نحسب Volume Flow Rate للخليط:
+          <div class="eq" style="margin:8px 0;">$$\dot{V}_3 = \dot{m}_{a3} \times v_3 = (1188.6)(0.8422) = \boxed{1001\ \text{m}^3/\text{min}}$$</div>
+        </div>
+      </div>
+
+      <p style="direction:rtl;text-align:right;margin-top:10px;font-size:14px;color:#1a4a6e;font-weight:600;">
+💡 <strong>القيم المعروفة اللي استخدمناها:</strong> ψ₁, ψ₂, h₁, h₂ (من الـ Chart) + v₁, v₂ (من الـ Chart) + V̇₁, V̇₂ (معطيات المسألة)
+      </p>
+    </div>
+
+    <div class="common-mistake">
+      <div class="cm-title">⚠️ Common Mistake — خطأ شائع</div>
+      <p style="direction:rtl;text-align:right;margin:0;">
+        <strong>ما تعملش المتوسط الحسابي البسيط!</strong><br>
+        كتير من الطلاب بيعملوا خطأ إنهم يحسبوا T₃ كمتوسط حسابي لـ T₁ و T₂ مباشرة. ده <strong>غلط</strong> لأن:<br>
+        • التيارين عندهم <strong>معدلات تدفق مختلفة</strong> (ṁ<sub>a1</sub> ≠ ṁ<sub>a2</sub>)<br>
+        • لازم نستخدم <strong>Weighted Average</strong> عبر الـ Energy Balance (h₃) والـ Mass Balance (ψ₃)<br>
+        • T₃ بنقرأها من الـ <strong>Psychrometric Chart</strong> مش من معادلة مباشرة!<br>
+        <span style="color:#bf360c;font-weight:700;">الطريقة الصح: نلاقي ψ₃ و h₃ الأول → ثم نروح للـ Chart نحدد النقطة → ونقرأ T₃ منها.</span>
+      </p>
+    </div>
+
     <div class="ucrd-sec uans">
       <span class="ucrd-sec-lbl">Final Answer</span>
       <div class="ans-grid"><div class="ans-row">&psi;<sub>3</sub>=0.00818 kg/kg</div>
@@ -2083,6 +2164,7 @@ body.nav-active #pb {
     <div class="ucrd-qbox">Cooling water from a power plant condenser enters a wet cooling tower at <strong>40°C</strong> at <strong>90 kg/s</strong> and is cooled to <strong>25°C</strong>. Air enters at <strong>1 atm</strong>, <strong>23°C</strong>, <strong>60% RH</strong> and leaves saturated at <strong>32°C</strong>. Determine <em>(a)</em> volume flow rate of air and <em>(b)</em> mass flow rate of makeup water.</div>
   </div>
   <div class="ucrd-body">
+    <div class="fig" style="margin:0 0 18px;"><img src="q14_wet_cooling_tower.png" alt="FIGURE — Wet Cooling Tower. Water enters at 40°C (90 kg/s), cooled to 25°C. Air enters at 1 atm, 23°C, 60% RH, exits saturated at 32°C." style="max-width:350px;"><figcaption style="font-size:12px;color:#999;margin-top:6px;direction:ltr">Schematic: Wet cooling tower — Water at 40°C / 90 kg/s cooled to 25°C. Air at 23°C, 60% RH exits saturated at 32°C.</figcaption></div>
     <div class="ucrd-sec ugiven">
       <span class="ucrd-sec-lbl">Given</span>
       <div class="gv-grid"><span>Water: T<sub>3</sub>=40&deg;C, m&#775;<sub>3</sub>=90 kg/s  &rarr;  T<sub>4</sub>=25&deg;C</span>
