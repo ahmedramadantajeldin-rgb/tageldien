@@ -762,6 +762,8 @@ body.nav-active #sheet-tab {
     <a href="#p9">Q9</a>
     <a href="#p10">Q10</a>
     <div class="nav-sep"></div>
+    <a href="#ex13-1" class="nav-sheet">Ex 13-1</a>
+    <div class="nav-sep"></div>
     <a href="#summary">Summary</a>
   </div>
 </nav>
@@ -1076,51 +1078,201 @@ body.nav-active #sheet-tab {
 </section>
 
 <!-- ── TEXTBOOK EXAMPLES ── -->
-<div class="ex-hdr">
-  <h3>Textbook Solved Examples</h3>
-  <p>Examples 13-1, 13-2, 13-3 — Cengel &amp; Boles 8th Ed.</p>
+<!-- ═══════════════ TEXTBOOK EXAMPLES BANNER ═══════════════ -->
+<div style="margin-top:36px">
+  <div class="part-banner">
+    <div class="pb-num">Textbook</div>
+    <div class="pb-title">Solved Textbook Examples — Chapter 13</div>
+  </div>
 </div>
 
-<div class="exp">
-  <div class="exh"><div class="exnum">Ex 13–1</div>
-    <div class="ext">Mass &amp; Mole Fractions — O₂, N₂, CH₄ Mixture</div></div>
-  <div class="exb">
-    <div class="fig" style="max-width:250px;margin:0 auto 14px">
-      <img src="data:image/jpeg;base64,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" alt="Fig 13-4"/>
-      <div class="fc"><strong>Figure 13–4</strong></div>
+<!-- ─── EXAMPLE 13-1 ─── -->
+<div id="ex13-1" class="pc">
+  <div class="ph"><div class="pnum" style="font-size:.75rem;width:48px;border-radius:6px">13.1</div>
+    <div class="pstmt">A gas mixture consists of 3 kg of O₂, 5 kg of N₂, and 12 kg of CH₄. Determine <em>(a)</em> the mass fraction of each component, <em>(b)</em> the mole fraction of each component, and <em>(c)</em> the average molar mass and gas constant of the mixture.</div>
+  </div>
+
+  <div class="psec"><div class="ptag tg">Given</div>
+    <div class="gt">
+      Mass of O₂: <strong>m<sub>O₂</sub> = 3 kg</strong> &nbsp;|&nbsp;
+      Mass of N₂: <strong>m<sub>N₂</sub> = 5 kg</strong> &nbsp;|&nbsp;
+      Mass of CH₄: <strong>m<sub>CH₄</sub> = 12 kg</strong><br>
+      Molar masses: M<sub>O₂</sub> = 32 kg/kmol, M<sub>N₂</sub> = 28 kg/kmol, M<sub>CH₄</sub> = 16 kg/kmol<br>
+      Universal gas constant: R̄ = 8.314 kJ/kmol·K
     </div>
-    <div class="ets"><div class="etn">1</div><div class="etb"><strong>Given:</strong> 3 kg O₂, 5 kg N₂, 12 kg CH₄. Find mass &amp; mole fractions, M<sub>mix</sub>, R<sub>mix</sub>.</div></div>
-    <div class="ets"><div class="etn">2</div><div class="etb">
-      <div class="fbox">$$mf_{O_2}=0.15,\; mf_{N_2}=0.25,\; mf_{CH_4}=0.60$$
-      $$y_{O_2}=0.092,\; y_{N_2}=0.175,\; y_{CH_4}=0.733$$
-      $$M_m=19.6\ \text{kg/kmol},\quad R_m=0.424\ \text{kJ/kg·K}$$</div>
-    </div></div>
   </div>
+
+  <div class="psec"><div class="ptag tr">Required</div>
+    <div class="gt">(a) Mass fractions &nbsp; (b) Mole fractions &nbsp; (c) M<sub>mix</sub> and R<sub>mix</sub></div>
+  </div>
+
+  <div class="psec"><div class="ptag ts">Solution</div>
+    <div class="steps">
+
+      <div class="step"><div class="sn">a</div><div class="sb"><strong>Total mass and mass fractions:</strong><br>
+        The total mass of the mixture is simply the sum of all component masses:
+        <div class="seq">\[ m_m = m_{O_2}+m_{N_2}+m_{CH_4} = 3+5+12 = 20\ \text{kg} \]</div>
+        Each mass fraction is the ratio of the component mass to the total mixture mass:
+        <div class="seq">\[ mf_{O_2}=\frac{3}{20}=0.15 \qquad mf_{N_2}=\frac{5}{20}=0.25 \qquad mf_{CH_4}=\frac{12}{20}=0.60 \]</div>
+        As a check: 0.15 + 0.25 + 0.60 = 1.00 ✓
+      </div></div>
+
+      <div class="step"><div class="sn">b</div><div class="sb"><strong>Mole numbers and mole fractions:</strong><br>
+        The number of moles of each component is found by dividing its mass by its molar mass:
+        <div class="seq">\[ N_{O_2}=\frac{3}{32}=0.0938\ \text{kmol} \qquad N_{N_2}=\frac{5}{28}=0.1786\ \text{kmol} \qquad N_{CH_4}=\frac{12}{16}=0.750\ \text{kmol} \]</div>
+        Total moles in the mixture:
+        <div class="seq">\[ N_m = 0.0938+0.1786+0.750 = 1.022\ \text{kmol} \]</div>
+        The mole fraction of each component:
+        <div class="seq">\[ y_{O_2}=\frac{0.0938}{1.022}=0.0918 \qquad y_{N_2}=\frac{0.1786}{1.022}=0.1748 \qquad y_{CH_4}=\frac{0.750}{1.022}=0.7339 \]</div>
+        Check: 0.0918 + 0.1748 + 0.7339 ≈ 1.00 ✓
+      </div></div>
+
+      <div class="step"><div class="sn">c</div><div class="sb"><strong>Average molar mass and mixture gas constant:</strong><br>
+        The apparent molar mass of the mixture can be found two equivalent ways — by definition, or using mole fractions:
+        <div class="seq">\[ M_m=\frac{m_m}{N_m}=\frac{20}{1.022}=19.57\ \text{kg/kmol} \]</div>
+        Verification using mole-fraction weighting:
+        <div class="seq">\[ M_m=\sum y_i M_i=(0.0918)(32)+(0.1748)(28)+(0.7339)(16) \]\[ M_m = 2.938+4.894+11.742 = 19.57\ \text{kg/kmol} \]</div>
+        The mixture gas constant:
+        <div class="seq">\[ R_m=\frac{\bar{R}}{M_m}=\frac{8.314}{19.57}=0.4249\ \text{kJ/kg·K} \]</div>
+      </div></div>
+
+    </div>
+  </div>
+  <div class="ans"><div class="al">Final Answers</div><div class="av">
+    <span>mf<sub>O₂</sub> = 0.15</span><span>mf<sub>N₂</sub> = 0.25</span><span>mf<sub>CH₄</sub> = 0.60</span><span>M<sub>m</sub> = 19.57 kg/kmol</span><span>R<sub>m</sub> = 0.4249 kJ/kg·K</span>
+  </div></div>
 </div>
 
-<div class="exp">
-  <div class="exh"><div class="exnum">Ex 13–2</div>
-    <div class="ext">P-v-T Nonideal — N₂/CO₂ (Four Methods)</div></div>
-  <div class="exb">
-    <div class="ets"><div class="etn">a</div><div class="etb"><strong>Ideal gas:</strong>
-      <div class="fbox">$$V_{ideal}=(8)(8.314)(300)/15000=1.330\ \text{m}^3$$</div></div></div>
-    <div class="ets"><div class="etn">b</div><div class="etb"><strong>Kay's rule:</strong> $T'_{cr}=259.7$ K, $P'_{cr}=6.39$ MPa → $Z_m=0.49$ → $V_m=\mathbf{0.652}\ \text{m}^3$</div></div>
-    <div class="ets"><div class="etn">c</div><div class="etb"><strong>Z + Amagat:</strong> $Z_m=0.48$ → $V_m=\mathbf{0.638}\ \text{m}^3$</div></div>
-    <div class="ets"><div class="etn">d</div><div class="etb"><strong>Z + Dalton (iterative):</strong> $V_m=\mathbf{0.648}\ \text{m}^3$</div></div>
+<!-- ─── EXAMPLE 13-2 ─── -->
+<div id="ex13-2" class="pc">
+  <div class="ph"><div class="pnum" style="font-size:.75rem;width:48px;border-radius:6px">13.2</div>
+    <div class="pstmt">A rigid tank contains 2 kmol of N₂ and 6 kmol of CO₂ gases at 300 K and 15 MPa. Estimate the volume of the tank on the basis of <em>(a)</em> the ideal-gas equation of state, <em>(b)</em> Kay's rule, <em>(c)</em> compressibility factors and Amagat's law, and <em>(d)</em> compressibility factors and Dalton's law.</div>
   </div>
+
+  <div class="psec"><div class="ptag tg">Given</div>
+    <div class="gt">
+      N<sub>N₂</sub> = 2 kmol &nbsp;|&nbsp; N<sub>CO₂</sub> = 6 kmol &nbsp;|&nbsp; T<sub>m</sub> = 300 K &nbsp;|&nbsp; P<sub>m</sub> = 15 MPa<br>
+      R̄ = 8.314 kPa·m³/kmol·K<br>
+      Critical properties — N₂: T<sub>cr</sub> = 126.2 K, P<sub>cr</sub> = 3.39 MPa &nbsp;|&nbsp; CO₂: T<sub>cr</sub> = 304.2 K, P<sub>cr</sub> = 7.39 MPa
+    </div>
+  </div>
+
+  <div class="psec"><div class="ptag tr">Required</div>
+    <div class="gt">Volume V<sub>m</sub> using four different approaches</div>
+  </div>
+
+  <div class="psec"><div class="ptag ts">Solution</div>
+    <div class="steps">
+
+      <div class="step"><div class="sn">a</div><div class="sb"><strong>Ideal-gas equation of state:</strong><br>
+        The total moles: N<sub>m</sub> = 2 + 6 = 8 kmol. Applying the ideal-gas law directly:
+        <div class="seq">\[ V_m=\frac{N_m \bar{R} T_m}{P_m}=\frac{(8)(8.314)(300)}{15{,}000}=1.330\ \text{m}^3 \]</div>
+      </div></div>
+
+      <div class="step"><div class="sn">b</div><div class="sb"><strong>Kay's Rule — pseudocritical properties:</strong><br>
+        First, the mole fractions: y<sub>N₂</sub> = 2/8 = 0.25 and y<sub>CO₂</sub> = 6/8 = 0.75.<br>
+        The pseudocritical temperature and pressure are mole-fraction-weighted averages:
+        <div class="seq">\[ T'_{cr,m}=y_{N_2}T_{cr,N_2}+y_{CO_2}T_{cr,CO_2}=(0.25)(126.2)+(0.75)(304.2)=259.7\ \text{K} \]\[ P'_{cr,m}=(0.25)(3.39)+(0.75)(7.39)=6.39\ \text{MPa} \]</div>
+        The pseudoreduced properties of the mixture:
+        <div class="seq">\[ T_R=\frac{300}{259.7}=1.155 \qquad P_R=\frac{15}{6.39}=2.348 \]</div>
+        From the generalized compressibility chart at these reduced properties: <strong>Z<sub>m</sub> ≈ 0.49</strong>.<br>
+        The actual volume is then:
+        <div class="seq">\[ V_m=Z_m V_{ideal}=(0.49)(1.330)=0.652\ \text{m}^3 \]</div>
+      </div></div>
+
+      <div class="step"><div class="sn">c</div><div class="sb"><strong>Amagat's Law with compressibility factors:</strong><br>
+        Each component is evaluated at the <em>mixture</em> T and P (Amagat's approach):
+        <div class="seq">\[ T_{R,N_2}=\frac{300}{126.2}=2.378 \quad P_{R,N_2}=\frac{15}{3.39}=4.425 \quad\Rightarrow\quad Z_{N_2}=1.02 \]\[ T_{R,CO_2}=\frac{300}{304.2}=0.986 \quad P_{R,CO_2}=\frac{15}{7.39}=2.030 \quad\Rightarrow\quad Z_{CO_2}=0.30 \]</div>
+        The mixture compressibility factor is the mole-fraction average:
+        <div class="seq">\[ Z_m=y_{N_2}Z_{N_2}+y_{CO_2}Z_{CO_2}=(0.25)(1.02)+(0.75)(0.30)=0.48 \]</div>
+        <div class="seq">\[ V_m=Z_m V_{ideal}=(0.48)(1.330)=0.638\ \text{m}^3 \]</div>
+        The result is very close to Kay's rule, confirming the accuracy.
+      </div></div>
+
+      <div class="step"><div class="sn">d</div><div class="sb"><strong>Dalton's Law with compressibility factors (iterative):</strong><br>
+        In Dalton's approach, each component is evaluated at mixture T and its own partial volume V<sub>i</sub> = V<sub>m</sub>/N<sub>i</sub>. The solution requires iteration since V<sub>m</sub> is unknown. Starting with V<sub>m</sub> = 1.330 m³ (ideal-gas value):<br><br>
+        Compute pseudoreduced volumes:
+        <div class="seq">\[ v_{R,N_2}=\frac{V_m/N_{N_2}}{\bar{R}T_{cr,N_2}/P_{cr,N_2}}=\frac{1.330/2}{(8.314)(126.2)/3390}=2.157 \]\[ v_{R,CO_2}=\frac{1.330/6}{(8.314)(304.2)/7390}=0.648 \]</div>
+        From the compressibility chart: Z<sub>N₂</sub> ≈ 0.99, Z<sub>CO₂</sub> ≈ 0.56, giving Z<sub>m</sub> = 0.25(0.99)+0.75(0.56) = 0.668.<br>
+        Updated estimate: V<sub>m</sub> = 0.668 × 1.330 = 0.888 m³. The iteration continues (2nd: 0.738 m³, 3rd: 0.678 m³, 4th: converges):
+        <div class="seq">\[ \boxed{V_m \approx 0.648\ \text{m}^3} \]</div>
+        All three non-ideal methods agree closely, while the ideal-gas assumption overestimates by more than double — showing significant error at high pressure.
+      </div></div>
+
+    </div>
+  </div>
+  <div class="ans"><div class="al">Final Answers</div><div class="av">
+    <span>(a) Ideal gas: 1.330 m³</span><span>(b) Kay's rule: 0.652 m³</span><span>(c) Amagat: 0.638 m³</span><span>(d) Dalton: 0.648 m³</span>
+  </div></div>
 </div>
 
-<div class="exp">
-  <div class="exh"><div class="exnum">Ex 13–3</div>
-    <div class="ext">Adiabatic Turbine — O₂/CO₂/He Mixture</div></div>
-  <div class="exb">
-    <div class="ets"><div class="etn">Q</div><div class="etb">mf<sub>O₂</sub>=0.0625, mf<sub>CO₂</sub>=0.625, mf<sub>He</sub>=0.3125; 1000→100 kPa; η<sub>t</sub>=90%</div></div>
-    <div class="ets"><div class="etn">1</div><div class="etb">
-      <div class="fbox">$$c_{p,m}=2.209\ \text{kJ/kg·K},\quad c_{v,m}=1.425,\quad k_m=1.550$$
-      $$T_{2s}=265\ \text{K},\quad T_2=298.5\ \text{K},\quad w_{out}=666.0\ \text{kJ/kg}$$
-      $$x_{dest}=79.2\ \text{kJ/kg},\quad \eta_{II}=89.4\%$$</div>
-    </div></div>
+<!-- ─── EXAMPLE 13-3 ─── -->
+<div id="ex13-3" class="pc">
+  <div class="ph"><div class="pnum" style="font-size:.75rem;width:48px;border-radius:6px">13.3</div>
+    <div class="pstmt">A mixture of oxygen (O₂), carbon dioxide (CO₂), and helium (He) gases with mass fractions of 0.0625, 0.625, and 0.3125, respectively, enters an adiabatic turbine at 1000 kPa and 600 K steadily and expands to 100 kPa. The isentropic efficiency of the turbine is 90 percent. Assuming constant specific heats at room temperature, determine <em>(a)</em> the work output per unit mass of mixture and <em>(b)</em> the exergy destruction and second-law efficiency. Take T₀ = 25°C.</div>
   </div>
+
+  <div class="psec"><div class="ptag tg">Given</div>
+    <div class="gt">
+      mf<sub>O₂</sub> = 0.0625, mf<sub>CO₂</sub> = 0.625, mf<sub>He</sub> = 0.3125<br>
+      Inlet: P₁ = 1000 kPa, T₁ = 600 K &nbsp;|&nbsp; Exit: P₂ = 100 kPa<br>
+      Isentropic efficiency: η<sub>turb</sub> = 90% = 0.90 &nbsp;|&nbsp; T₀ = 298 K (25°C)<br>
+      Specific heats (room temperature, from Table A-2a):<br>
+      &nbsp;&nbsp;O₂: c<sub>p</sub> = 0.918, c<sub>v</sub> = 0.658 kJ/kg·K &nbsp;|&nbsp;
+      CO₂: c<sub>p</sub> = 0.846, c<sub>v</sub> = 0.657 kJ/kg·K &nbsp;|&nbsp;
+      He: c<sub>p</sub> = 5.1926, c<sub>v</sub> = 3.1156 kJ/kg·K
+    </div>
+  </div>
+
+  <div class="psec" style="display:flex;align-items:flex-start;gap:22px;flex-wrap:wrap">
+    <div style="flex:1;min-width:260px">
+      <div class="ptag tr">Required</div>
+      <div class="gt">(a) Actual work output w<sub>out</sub> (kJ/kg) &nbsp;&nbsp; (b) x<sub>dest</sub> and η<sub>II</sub></div>
+    </div>
+    <div class="fig" style="max-width:220px;flex-shrink:0;margin:0">
+      <img src="C:/Users/ENG  AHMED TAG/.gemini/antigravity/brain/bb2bf6f5-27f8-4246-8ad8-0867cdcd1099/fig13_14_turbine_1778693527237.png" alt="Figure 13-14 Turbine Schematic" style="max-width:100%;height:auto;border-radius:4px">
+      <div class="fc"><strong>Figure 13–14</strong> — Schematic for Example 13–3.</div>
+    </div>
+  </div>
+
+  <div class="psec"><div class="ptag ts">Solution</div>
+    <div class="steps">
+
+      <div class="step"><div class="sn">a</div><div class="sb"><strong>Mixture specific heats:</strong><br>
+        The constant-pressure and constant-volume specific heats of the mixture are found by mass-fraction weighting:
+        <div class="seq">\[ c_{p,m}=mf_{O_2}c_{p,O_2}+mf_{CO_2}c_{p,CO_2}+mf_{He}c_{p,He} \]\[ c_{p,m}=(0.0625)(0.918)+(0.625)(0.846)+(0.3125)(5.1926)=2.209\ \text{kJ/kg·K} \]\[ c_{v,m}=(0.0625)(0.658)+(0.625)(0.657)+(0.3125)(3.1156)=1.425\ \text{kJ/kg·K} \]</div>
+        The apparent gas constant and specific heat ratio of the mixture:
+        <div class="seq">\[ R_m=c_{p,m}-c_{v,m}=2.209-1.425=0.7836\ \text{kJ/kg·K} \qquad k=\frac{c_{p,m}}{c_{v,m}}=\frac{2.209}{1.425}=1.550 \]</div>
+      </div></div>
+
+      <div class="step"><div class="sn"></div><div class="sb"><strong>Isentropic exit temperature and actual work output:</strong><br>
+        For the isentropic (ideal) process, the exit temperature is:
+        <div class="seq">\[ T_{2s}=T_1\left(\frac{P_2}{P_1}\right)^{(k-1)/k}=(600)\left(\frac{100}{1000}\right)^{0.550/1.550}=(600)(0.1)^{0.3548}=265.0\ \text{K} \]</div>
+        Applying the isentropic efficiency definition to find the actual exit temperature:
+        <div class="seq">\[ T_2=T_1-\eta_{turb}(T_1-T_{2s})=600-(0.90)(600-265.0)=298.5\ \text{K} \]</div>
+        The actual turbine work output per unit mass (adiabatic turbine, so no heat transfer):
+        <div class="seq">\[ w_{out}=c_{p,m}(T_1-T_2)=(2.209)(600-298.5)=\mathbf{666.0}\ \text{kJ/kg} \]</div>
+      </div></div>
+
+      <div class="step"><div class="sn">b</div><div class="sb"><strong>Exergy destruction and second-law efficiency:</strong><br>
+        The entropy change of the gas mixture through the turbine:
+        <div class="seq">\[ s_2-s_1=c_{p,m}\ln\frac{T_2}{T_1}-R_m\ln\frac{P_2}{P_1} \]\[ s_2-s_1=(2.209)\ln\frac{298.5}{600}-(0.7836)\ln\frac{100}{1000}=(2.209)(-0.6970)-(0.7836)(-2.3026) \]\[ s_2-s_1=-1.5397+1.8047=0.2650\ \text{kJ/kg·K} \]</div>
+        For an adiabatic turbine, entropy generation equals the entropy rise of the working fluid. The exergy destroyed:
+        <div class="seq">\[ x_{dest}=T_0\,s_{gen}=T_0(s_2-s_1)=(298)(0.2650)=78.97\approx79.0\ \text{kJ/kg} \]</div>
+        The expended (inlet) exergy equals work output plus exergy destroyed:
+        <div class="seq">\[ x_{expended}=w_{out}+x_{dest}=666.0+79.0=745.0\ \text{kJ/kg} \]</div>
+        The second-law efficiency is the ratio of recovered exergy to expended exergy:
+        <div class="seq">\[ \eta_{II}=\frac{x_{recovered}}{x_{expended}}=\frac{w_{out}}{x_{expended}}=\frac{666.0}{745.0}=0.894\quad(89.4\%) \]</div>
+        The second-law efficiency of 89.4% indicates this is a highly effective turbine. The 1.6% gap from 90% isentropic efficiency reflects the irreversibility within the process.
+      </div></div>
+
+    </div>
+  </div>
+  <div class="ans"><div class="al">Final Answers</div><div class="av">
+    <span>(a) w<sub>out</sub> = 666.0 kJ/kg</span>
+    <span>(b) x<sub>dest</sub> = 79.0 kJ/kg</span>
+    <span>η<sub>II</sub> = 89.4%</span>
+  </div></div>
 </div>
 
 <!-- ══════════════════════════════════════

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ahmed Tageldien — Mechanical Engineering Student Portal. Access all course notes: Thermodynamics, Engineering Economy, Machine Design, and Numerical Methods." />
+  <title>Ahmed Tageldien — Engineering Portal</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════════
+       DESIGN TOKENS
+    ══════════════════════════════════════════════ */
+    :root {
+      --bg:          #0b0f1a;
+      --bg-card:     #111622;
+      --bg-card-h:   #161d2f;
+      --border:      rgba(255,255,255,0.06);
+      --border-h:    rgba(255,255,255,0.14);
+      --text:        #e8ecf4;
+      --text-dim:    #7a86a0;
+      --text-dimmer: #424d66;
+
+      /* subject accent colours */
+      --c1: #4f9cf9;   /* Thermodynamics — blue  */
+      --c2: #e0a040;   /* Economy        — gold  */
+      --c3: #5dd898;   /* Machine Design — green */
+      --c4: #c07af4;   /* Math 302       — violet*/
+
+      --radius: 16px;
+      --ease: cubic-bezier(.22,.68,0,1.2);
+    }
+
+    /* ══════════════════════════════════════════════
+       RESET
+    ══════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════════════════════
+       ANIMATED GRID BACKGROUND
+    ══════════════════════════════════════════════ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(79,156,249,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,156,249,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ══════════════════════════════════════════════
+       TOP ACCENT RULE
+    ══════════════════════════════════════════════ */
+    .top-rule {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3), var(--c4));
+      background-size: 200% 100%;
+      animation: gradientShift 6s linear infinite;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes gradientShift {
+      0%   { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+
+    /* ══════════════════════════════════════════════
+       MAIN WRAPPER
+    ══════════════════════════════════════════════ */
+    .wrapper {
+      width: 100%;
+      max-width: 900px;
+      padding: 80px 32px 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ══════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════ */
+    .hero {
+      text-align: center;
+      margin-bottom: 72px;
+      animation: riseIn 0.8s var(--ease) both;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c1);
+      border: 1px solid rgba(79,156,249,0.25);
+      background: rgba(79,156,249,0.07);
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 32px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--c1);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(0.7); }
+    }
+
+    .hero-name {
+      font-size: clamp(42px, 8vw, 76px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .hero-name span {
+      background: linear-gradient(135deg, var(--c1) 0%, var(--c4) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-size: clamp(13px, 2.5vw, 16px);
+      font-weight: 300;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      margin-bottom: 40px;
+    }
+
+    /* ornamental divider */
+    .hero-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .hero-ornament::before,
+    .hero-ornament::after {
+      content: '';
+      height: 1px;
+      width: 80px;
+      background: linear-gradient(to right, transparent, var(--border-h));
+    }
+    .hero-ornament::after {
+      background: linear-gradient(to left, transparent, var(--border-h));
+    }
+    .hero-ornament-inner {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .hero-ornament-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text-dimmer);
+    }
+    .hero-ornament-diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--c1);
+      transform: rotate(45deg);
+      border-radius: 2px;
+    }
+
+    /* stats row */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dimmer);
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION HEADING
+    ══════════════════════════════════════════════ */
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease 0.15s both;
+    }
+    .section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-heading-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dimmer);
+      white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════════════════
+       SUBJECT GRID
+    ══════════════════════════════════════════════ */
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 56px;
+    }
+    @media (max-width: 580px) {
+      .subject-grid { grid-template-columns: 1fr; }
+    }
+
+    .subject-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 26px 24px;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform     0.35s var(--ease),
+        border-color  0.25s ease,
+        background    0.25s ease,
+        box-shadow    0.35s ease;
+      animation: fadeUp 0.55s ease both;
+    }
+    .subject-card:nth-child(1) { animation-delay: 0.10s; --accent: var(--c1); }
+    .subject-card:nth-child(2) { animation-delay: 0.17s; --accent: var(--c2); }
+    .subject-card:nth-child(3) { animation-delay: 0.24s; --accent: var(--c3); }
+    .subject-card:nth-child(4) { animation-delay: 0.31s; --accent: var(--c4); }
+
+    /* glowing top border */
+    .subject-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      opacity: 0.6;
+      border-radius: var(--radius) var(--radius) 0 0;
+      transition: opacity 0.25s ease, height 0.25s ease;
+    }
+
+    /* large faded number bg */
+    .subject-card::after {
+      content: attr(data-num);
+      position: absolute;
+      right: 20px;
+      bottom: -12px;
+      font-family: 'Space Mono', monospace;
+      font-size: 80px;
+      font-weight: 700;
+      color: var(--text);
+      opacity: 0.025;
+      line-height: 1;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .subject-card:hover {
+      background: var(--bg-card-h);
+      border-color: var(--border-h);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.4),
+        0 0 0 1px var(--accent),
+        inset 0 0 30px rgba(0,0,0,0.1);
+    }
+    .subject-card:hover::before { opacity: 1; height: 3px; }
+    .subject-card:hover::after  { opacity: 0.05; transform: scale(1.08); }
+
+    /* card icon */
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      flex-shrink: 0;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .subject-card:hover .card-icon {
+      background: rgba(255,255,255,0.07);
+      border-color: var(--accent);
+      transform: scale(1.1) rotate(-4deg);
+    }
+    .card-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.25s;
+    }
+
+    /* card content */
+    .card-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+      opacity: 0.8;
+    }
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .card-desc {
+      font-size: 12.5px;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    /* card footer */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .card-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--text-dimmer);
+      letter-spacing: 0.05em;
+    }
+    .card-cta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      transition: gap 0.2s ease;
+    }
+    .subject-card:hover .card-cta { gap: 10px; }
+    .card-cta svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.2s ease;
+    }
+    .subject-card:hover .card-cta svg { transform: translateX(3px); }
+
+    /* ══════════════════════════════════════════════
+       QUICK INFO STRIP
+    ══════════════════════════════════════════════ */
+    .info-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 56px;
+      animation: fadeUp 0.6s ease 0.4s both;
+    }
+    .info-strip-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(79,156,249,0.1);
+      border: 1px solid rgba(79,156,249,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-strip-icon svg {
+      width: 16px; height: 16px;
+      fill: none;
+      stroke: var(--c1);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .info-strip-text {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .info-strip-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ══════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════ */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 28px 32px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dimmer);
+      letter-spacing: 0.05em;
+    }
+    .footer-text span { color: var(--c1); }
+
+    /* ══════════════════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════════════════ */
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(36px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════ */
+    @media (max-width: 700px) {
+      .wrapper    { padding: 56px 20px 80px; }
+      .stats-row  { gap: 24px; }
+      .hero       { margin-bottom: 52px; }
+      .info-strip { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 400px) {
+      .hero-name  { font-size: 36px; }
+      .stat-num   { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated top rule -->
+  <div class="top-rule"></div>
+
+  <div class="wrapper">
+
+    <!-- ═══════════  HERO  ═══════════ -->
+    <header class="hero">
+      <div class="hero-badge">Engineering Portal · Student Dashboard</div>
+      <h1 class="hero-name">Ahmed <span>Tageldien</span></h1>
+      <p class="hero-title">Mechanical Engineering Student &nbsp;·&nbsp; Course Notes & Study Materials</p>
+
+      <div class="hero-ornament">
+        <div class="hero-ornament-inner">
+          <div class="hero-ornament-dot"></div>
+          <div class="hero-ornament-diamond"></div>
+          <div class="hero-ornament-dot"></div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-num" id="stat-subjects">4</div>
+          <div class="stat-label">Subjects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-topics">28</div>
+          <div class="stat-label">Topics</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="stat-pages">50+</div>
+          <div class="stat-label">Pages</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══════════  SUBJECTS  ═══════════ -->
+    <div class="section-heading">
+      <span class="section-heading-text">Course Subjects</span>
+    </div>
+
+    <!-- ───────────────────────────────────────────────────────────────────
+         SUBJECT DATA — Edit only this <nav> to add / remove subjects.
+         Each card is a plain <a href="..."> pointing to the subject's
+         GitHub Pages index.html.  No JS is needed for navigation.
+    ─────────────────────────────────────────────────────────────────────── -->
+    <nav class="subject-grid" aria-label="Course Subjects" id="subjectGrid">
+      <!-- Cards are rendered by the script below from the SUBJECTS array -->
+    </nav>
+
+    <!-- ═══════════  INFO STRIP  ═══════════ -->
+    <div class="info-strip">
+      <div class="info-strip-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p class="info-strip-text">
+        <strong>GitHub Pages compatible.</strong>  All links use relative paths pointing to each subject's own repository/page.
+        Update a subject's content anytime — this portal requires no changes.
+      </p>
+    </div>
+
+  </div><!-- /wrapper -->
+
+  <!-- ═══════════  FOOTER  ═══════════ -->
+  <footer>
+    <p class="footer-text">
+      <span>AHMED TAGELDIEN</span> &nbsp;·&nbsp; Mechanical Engineering &nbsp;·&nbsp; 2026
+    </p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       DATA-DRIVEN SUBJECT CARDS
+       ─────────────────────────────────────────────────────
+       To add a subject: push a new object into SUBJECTS.
+       To update a URL:  change the "url" field only.
+       Nothing else in this file needs editing.
+  ═══════════════════════════════════════════════════════ -->
+  <script>
+    const SUBJECTS = [
+      {
+        num:   "01",
+        tag:   "MENG · Thermodynamics",
+        title: "Thermo 3",
+        desc:  "Exergy analysis, gas mixtures, psychrometrics, and chemical reactions — Chapters 8, 13, 14, 15.",
+        meta:  "4 chapters",
+        icon:  `<svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+        color: "#4f9cf9",
+        /* ── EDIT THIS URL when you deploy to GitHub Pages ── */
+        url:   "../index.html"
+        /* Example: "https://ahmedtageldien.github.io/tageldien/" */
+      },
+      {
+        num:   "02",
+        tag:   "MENG · Engineering Economy",
+        title: "Economy",
+        desc:  "Interest factors, present worth, annual worth, replacement decisions — Chapters 1–11.",
+        meta:  "6 chapters",
+        icon:  `<svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+        color: "#e0a040",
+        url:   "../../economy/index.html"
+        /* Example: "https://ahmedtageldien.github.io/economy/" */
+      },
+      {
+        num:   "03",
+        tag:   "MENG · Machine Design ME307",
+        title: "Machine Design",
+        desc:  "Stresses, fits & tolerances, riveted joints, shaft design — 8 lectures & 7 sheets.",
+        meta:  "8 lectures · 7 sheets",
+        icon:  `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M4.93 19.07l1.41-1.41M19.07 19.07l-1.41-1.41M21 12h-2M5 12H3M12 3V1M12 23v-2"/></svg>`,
+        color: "#5dd898",
+        url:   "../../my-website/index.html"
+        /* Example: "https://ahmedtageldien.github.io/my-website/" */
+      },
+      {
+        num:   "04",
+        tag:   "MATH302 · Numerical Methods",
+        title: "Math 302",
+        desc:  "Bisection, Newton-Raphson, Jacobi, interpolation, Euler & power methods.",
+        meta:  "9 topics",
+        icon:  `<svg viewBox="0 0 24 24"><path d="M3 18 Q9 4 12 12 Q15 20 21 6"/></svg>`,
+        color: "#c07af4",
+        url:   "../../math302/index.html"
+        /* Example: "https://ahmedtageldien.github.io/math302/" */
+      }
+    ];
+
+    /* ── Render cards ── */
+    const grid = document.getElementById('subjectGrid');
+    grid.innerHTML = SUBJECTS.map(s => `
+      <a class="subject-card"
+         href="${s.url}"
+         data-num="${s.num}"
+         style="--accent:${s.color}"
+         aria-label="${s.title} — ${s.tag}">
+        <div class="card-icon">
+          ${s.icon}
+        </div>
+        <div class="card-tag">${s.tag}</div>
+        <div class="card-title">${s.title}</div>
+        <div class="card-desc">${s.desc}</div>
+        <div class="card-footer">
+          <span class="card-meta">${s.meta}</span>
+          <span class="card-cta">
+            Open
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>`).join('');
+  </script>
+
+</body>
+</html>
