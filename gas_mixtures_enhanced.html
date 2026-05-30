@@ -1023,25 +1023,7 @@ body.nav-active #sheet-tab {
   </div>
 </section>
 
-<!-- ── REAL GAS ── -->
-<section class="sec" id="s-real">
-  <div class="sec-badge">Section 13–2</div>
-  <h2 class="sec-title">Real Gas Mixtures — المخاليط الحقيقية</h2>
 
-  <h3 class="sub">المنهج الأول: Compressibility Factor</h3>
-  <div class="fbox"><span class="fl">Eq. 13–10</span>
-    $$Z_m = \sum_{i=1}^{k} y_i Z_i \qquad P_mV_m = Z_m N_m\bar{R}T_m$$
-  </div>
-
-  <h3 class="sub">المنهج الثاني: Kay's Rule</h3>
-  <div class="fbox"><span class="fl">Eq. 13–11</span>
-    $$P'_{cr,m} = \sum y_i P_{cr,i} \qquad T'_{cr,m} = \sum y_i T_{cr,i}$$
-    $$T_R = T_m/T'_{cr,m} \qquad P_R = P_m/P'_{cr,m} \xrightarrow{\text{chart}} Z_m$$
-  </div>
-  <div class="note lt">
-    <strong>Amagat vs Dalton:</strong> Amagat (عند $T_m$, $P_m$) أدق للضغوط العالية. Dalton أنسب للضغوط المنخفضة.
-  </div>
-</section>
 
 <!-- ── PROPERTIES ── -->
 <section class="sec" id="s-props">
@@ -1143,74 +1125,78 @@ body.nav-active #sheet-tab {
   </div></div>
 </div>
 
-<!-- ─── EXAMPLE 13-2 ─── -->
-<div id="ex13-2" class="pc">
-  <div class="ph"><div class="pnum" style="font-size:.75rem;width:48px;border-radius:6px">13.2</div>
-    <div class="pstmt">A rigid tank contains 2 kmol of N₂ and 6 kmol of CO₂ gases at 300 K and 15 MPa. Estimate the volume of the tank on the basis of <em>(a)</em> the ideal-gas equation of state, <em>(b)</em> Kay's rule, <em>(c)</em> compressibility factors and Amagat's law, and <em>(d)</em> compressibility factors and Dalton's law.</div>
-  </div>
 
-  <div class="psec"><div class="ptag tg">Given</div>
-    <div class="gt">
-      N<sub>N₂</sub> = 2 kmol &nbsp;|&nbsp; N<sub>CO₂</sub> = 6 kmol &nbsp;|&nbsp; T<sub>m</sub> = 300 K &nbsp;|&nbsp; P<sub>m</sub> = 15 MPa<br>
-      R̄ = 8.314 kPa·m³/kmol·K<br>
-      Critical properties — N₂: T<sub>cr</sub> = 126.2 K, P<sub>cr</sub> = 3.39 MPa &nbsp;|&nbsp; CO₂: T<sub>cr</sub> = 304.2 K, P<sub>cr</sub> = 7.39 MPa
-    </div>
-  </div>
-
-  <div class="psec"><div class="ptag tr">Required</div>
-    <div class="gt">Volume V<sub>m</sub> using four different approaches</div>
-  </div>
-
-  <div class="psec"><div class="ptag ts">Solution</div>
-    <div class="steps">
-
-      <div class="step"><div class="sn">a</div><div class="sb"><strong>Ideal-gas equation of state:</strong><br>
-        The total moles: N<sub>m</sub> = 2 + 6 = 8 kmol. Applying the ideal-gas law directly:
-        <div class="seq">\[ V_m=\frac{N_m \bar{R} T_m}{P_m}=\frac{(8)(8.314)(300)}{15{,}000}=1.330\ \text{m}^3 \]</div>
-      </div></div>
-
-      <div class="step"><div class="sn">b</div><div class="sb"><strong>Kay's Rule — pseudocritical properties:</strong><br>
-        First, the mole fractions: y<sub>N₂</sub> = 2/8 = 0.25 and y<sub>CO₂</sub> = 6/8 = 0.75.<br>
-        The pseudocritical temperature and pressure are mole-fraction-weighted averages:
-        <div class="seq">\[ T'_{cr,m}=y_{N_2}T_{cr,N_2}+y_{CO_2}T_{cr,CO_2}=(0.25)(126.2)+(0.75)(304.2)=259.7\ \text{K} \]\[ P'_{cr,m}=(0.25)(3.39)+(0.75)(7.39)=6.39\ \text{MPa} \]</div>
-        The pseudoreduced properties of the mixture:
-        <div class="seq">\[ T_R=\frac{300}{259.7}=1.155 \qquad P_R=\frac{15}{6.39}=2.348 \]</div>
-        From the generalized compressibility chart at these reduced properties: <strong>Z<sub>m</sub> ≈ 0.49</strong>.<br>
-        The actual volume is then:
-        <div class="seq">\[ V_m=Z_m V_{ideal}=(0.49)(1.330)=0.652\ \text{m}^3 \]</div>
-      </div></div>
-
-      <div class="step"><div class="sn">c</div><div class="sb"><strong>Amagat's Law with compressibility factors:</strong><br>
-        Each component is evaluated at the <em>mixture</em> T and P (Amagat's approach):
-        <div class="seq">\[ T_{R,N_2}=\frac{300}{126.2}=2.378 \quad P_{R,N_2}=\frac{15}{3.39}=4.425 \quad\Rightarrow\quad Z_{N_2}=1.02 \]\[ T_{R,CO_2}=\frac{300}{304.2}=0.986 \quad P_{R,CO_2}=\frac{15}{7.39}=2.030 \quad\Rightarrow\quad Z_{CO_2}=0.30 \]</div>
-        The mixture compressibility factor is the mole-fraction average:
-        <div class="seq">\[ Z_m=y_{N_2}Z_{N_2}+y_{CO_2}Z_{CO_2}=(0.25)(1.02)+(0.75)(0.30)=0.48 \]</div>
-        <div class="seq">\[ V_m=Z_m V_{ideal}=(0.48)(1.330)=0.638\ \text{m}^3 \]</div>
-        The result is very close to Kay's rule, confirming the accuracy.
-      </div></div>
-
-      <div class="step"><div class="sn">d</div><div class="sb"><strong>Dalton's Law with compressibility factors (iterative):</strong><br>
-        In Dalton's approach, each component is evaluated at mixture T and its own partial volume V<sub>i</sub> = V<sub>m</sub>/N<sub>i</sub>. The solution requires iteration since V<sub>m</sub> is unknown. Starting with V<sub>m</sub> = 1.330 m³ (ideal-gas value):<br><br>
-        Compute pseudoreduced volumes:
-        <div class="seq">\[ v_{R,N_2}=\frac{V_m/N_{N_2}}{\bar{R}T_{cr,N_2}/P_{cr,N_2}}=\frac{1.330/2}{(8.314)(126.2)/3390}=2.157 \]\[ v_{R,CO_2}=\frac{1.330/6}{(8.314)(304.2)/7390}=0.648 \]</div>
-        From the compressibility chart: Z<sub>N₂</sub> ≈ 0.99, Z<sub>CO₂</sub> ≈ 0.56, giving Z<sub>m</sub> = 0.25(0.99)+0.75(0.56) = 0.668.<br>
-        Updated estimate: V<sub>m</sub> = 0.668 × 1.330 = 0.888 m³. The iteration continues (2nd: 0.738 m³, 3rd: 0.678 m³, 4th: converges):
-        <div class="seq">\[ \boxed{V_m \approx 0.648\ \text{m}^3} \]</div>
-        All three non-ideal methods agree closely, while the ideal-gas assumption overestimates by more than double — showing significant error at high pressure.
-      </div></div>
-
-    </div>
-  </div>
-  <div class="ans"><div class="al">Final Answers</div><div class="av">
-    <span>(a) Ideal gas: 1.330 m³</span><span>(b) Kay's rule: 0.652 m³</span><span>(c) Amagat: 0.638 m³</span><span>(d) Dalton: 0.648 m³</span>
-  </div></div>
-</div>
 
 <!-- ─── EXAMPLE 13-3 ─── -->
-<div id="ex13-3" class="pc">
-  <div class="ph"><div class="pnum" style="font-size:.75rem;width:48px;border-radius:6px">13.3</div>
+<!-- EXAM IMPORTANT BANNER -->
+<div style="
+  background: linear-gradient(135deg, #ff6b35 0%, #f7c59f 40%, #ff4444 100%);
+  border-radius: 16px 16px 0 0;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 36px;
+  box-shadow: 0 4px 20px rgba(255,68,68,0.35);
+  position: relative;
+  overflow: hidden;
+">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(255,255,255,0.05) 10px,rgba(255,255,255,0.05) 20px);pointer-events:none"></div>
+  <div style="font-size:2rem;animation:pulse-star 1.2s ease-in-out infinite alternate">&#11088;</div>
+  <div style="flex:1">
+    <div style="color:#fff;font-weight:900;font-size:1.15rem;letter-spacing:.5px;text-shadow:0 2px 8px rgba(0,0,0,0.3)">
+      ⚠️ مهم جداً جداً — متوقع في الامتحان!
+    </div>
+    <div style="color:rgba(255,255,255,0.92);font-size:.88rem;margin-top:3px">
+      📚 احفظ خطوات الحل كاملة • تشمل: خصائص المخلوط • كفاءة التوربين • Exergy • القانون الثاني
+    </div>
+  </div>
+  <div style="
+    background:rgba(255,255,255,0.2);
+    border:2px solid rgba(255,255,255,0.6);
+    border-radius:10px;
+    padding:6px 14px;
+    color:#fff;
+    font-weight:900;
+    font-size:.9rem;
+    text-align:center;
+    white-space:nowrap;
+    backdrop-filter:blur(4px);
+  ">EXAM<br>QUESTION</div>
+</div>
+<style>
+@keyframes pulse-star {
+  from { transform: scale(1) rotate(-5deg); }
+  to   { transform: scale(1.25) rotate(5deg); }
+}
+</style>
+
+<div id="ex13-3" class="pc" style="
+  border: 3px solid #ff4444;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 8px 32px rgba(255,68,68,0.2);
+  margin-top: 0;
+  position: relative;
+">
+  <div style="
+    position:absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg,#ff4444,#c00);
+    color:#fff;
+    font-weight:900;
+    font-size:.7rem;
+    padding:4px 10px;
+    border-radius:20px;
+    letter-spacing:1px;
+    box-shadow:0 2px 8px rgba(200,0,0,0.4);
+  ">&#9733; IMPORTANT &#9733;</div>
+  <div class="ph" style="padding-top:36px">
+    <div class="pnum" style="font-size:.75rem;width:48px;border-radius:6px;background:linear-gradient(135deg,#ff4444,#c00);box-shadow:0 2px 10px rgba(200,0,0,0.4)">13.3</div>
     <div class="pstmt">A mixture of oxygen (O₂), carbon dioxide (CO₂), and helium (He) gases with mass fractions of 0.0625, 0.625, and 0.3125, respectively, enters an adiabatic turbine at 1000 kPa and 600 K steadily and expands to 100 kPa. The isentropic efficiency of the turbine is 90 percent. Assuming constant specific heats at room temperature, determine <em>(a)</em> the work output per unit mass of mixture and <em>(b)</em> the exergy destruction and second-law efficiency. Take T₀ = 25°C.</div>
   </div>
+
 
   <div class="psec"><div class="ptag tg">Given</div>
     <div class="gt">
@@ -1454,9 +1440,16 @@ body.nav-active #sheet-tab {
   <div class="ph"><div class="pnum">6</div>
     <div class="pstmt">A steady flow of 0.1 kmol/s CO₂ at 1000 K is mixed with 0.2 kmol/s N₂ at 400 K at 100 kPa, then <em>isentropically compressed</em> to 500 kPa. Find the mixing chamber exit temperature and the compressor power.</div>
   </div>
-  <div class="psec"><div class="ptag tg">Given</div>
-    <div class="gt">Ṅ<sub>CO₂</sub>=0.1 kmol/s at T<sub>CO₂</sub>=1000 K &nbsp; Ṅ<sub>N₂</sub>=0.2 kmol/s at T<sub>N₂</sub>=400 K<br>
-    P₁=100 kPa → P₂=500 kPa (isentropic) &nbsp; C̄<sub>p,CO₂</sub>=37.1, C̄<sub>p,N₂</sub>=29.1 kJ/kmol·K</div>
+  <div class="psec" style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+    <div style="flex:1;min-width:220px">
+      <div class="ptag tg">Given</div>
+      <div class="gt">Ṅ<sub>CO₂</sub>=0.1 kmol/s at T<sub>CO₂</sub>=1000 K &nbsp; Ṅ<sub>N₂</sub>=0.2 kmol/s at T<sub>N₂</sub>=400 K<br>
+      P₁=100 kPa → P₂=500 kPa (isentropic) &nbsp; C̄<sub>p,CO₂</sub>=37.1, C̄<sub>p,N₂</sub>=29.1 kJ/kmol·K</div>
+    </div>
+    <div class="fig" style="max-width:280px;flex-shrink:0;margin:0;background:#f8faff;border:1px solid #dde4f0;border-radius:8px;padding:10px;text-align:center">
+      <img src="q6_mix_compressor.png" alt="Mixing chamber and compressor schematic" style="max-width:100%;height:auto;border-radius:4px">
+      <div class="fc" style="margin-top:6px;font-size:.8rem;color:#555"><strong>Figure:</strong> Mixing chamber (1,2→3) then isentropic compressor (3→4)</div>
+    </div>
   </div>
   <div class="psec"><div class="ptag tr">Required</div>
     <div class="gt">(a) Mixing exit temperature T₃ &nbsp; (b) Compressor power Ẇ<sub>c</sub></div>
@@ -1556,9 +1549,16 @@ body.nav-active #sheet-tab {
   <div class="ph"><div class="pnum">9</div>
     <div class="pstmt">An insulated tank (1 kg O₂ at 15°C, 300 kPa) is connected to a 2-m³ uninsulated tank (N₂ at 50°C, 500 kPa). Valve opened → mixture at 25°C. Find (a) final P, (b) heat transfer Q, (c) entropy generated S<sub>gen</sub>. T₀=25°C.</div>
   </div>
-  <div class="psec"><div class="ptag tg">Given</div>
-    <div class="gt">Tank A: m<sub>O₂</sub>=1 kg, T=288.15 K, P=300 kPa &nbsp;|&nbsp; Tank B: V<sub>N₂</sub>=2 m³, T=323.15 K, P=500 kPa<br>
-    T<sub>f</sub>=298.15 K &nbsp; R<sub>O₂</sub>=0.2598, R<sub>N₂</sub>=0.2969 kJ/kg·K &nbsp; C<sub>v,O₂</sub>=0.6475, C<sub>v,N₂</sub>=0.743 kJ/kg·K</div>
+  <div class="psec" style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+    <div style="flex:1;min-width:220px">
+      <div class="ptag tg">Given</div>
+      <div class="gt">Tank A: m<sub>O₂</sub>=1 kg, T=288.15 K, P=300 kPa &nbsp;|&nbsp; Tank B: V<sub>N₂</sub>=2 m³, T=323.15 K, P=500 kPa<br>
+      T<sub>f</sub>=298.15 K &nbsp; R<sub>O₂</sub>=0.2598, R<sub>N₂</sub>=0.2969 kJ/kg·K &nbsp; C<sub>v,O₂</sub>=0.6475, C<sub>v,N₂</sub>=0.743 kJ/kg·K</div>
+    </div>
+    <div class="fig" style="max-width:280px;flex-shrink:0;margin:0;background:#f8faff;border:1px solid #dde4f0;border-radius:8px;padding:10px;text-align:center">
+      <img src="q9_two_tanks.png" alt="Two connected tanks with valve" style="max-width:100%;height:auto;border-radius:4px">
+      <div class="fc" style="margin-top:6px;font-size:.8rem;color:#555"><strong>Figure:</strong> O₂ tank (A) connected via valve to N₂ tank (B)</div>
+    </div>
   </div>
   <div class="psec"><div class="ptag tr">Required</div><div class="gt">(a) P<sub>f</sub> &nbsp; (b) Q &nbsp; (c) S<sub>gen</sub></div></div>
   <div class="psec"><div class="ptag ts">Solution</div>
