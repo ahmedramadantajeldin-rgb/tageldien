@@ -512,6 +512,40 @@
     <header class="hero">
       <div class="hero-badge">Engineering Portal · Student Dashboard</div>
       <h1 class="hero-name">Ahmed <span>Tageldien</span></h1>
+
+<!-- ═══════════ قسم الأدعية ═══════════ -->
+<div class="duaa-section-wrapper" style="max-width:980px;margin:28px auto 0;padding:0 28px;">
+  <div class="duaa-card" style="background:#fff;border:1.5px solid #e8b84b;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(168,120,42,0.10);">
+    <button class="duaa-toggle" onclick="toggleDuaa(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#7a5800,#b8860b);color:#fff;border:none;padding:16px 24px;cursor:pointer;font-family:inherit;font-size:17px;font-weight:700;letter-spacing:0.3px;text-align:right;direction:rtl;">
+      <span>📖 دعاء</span>
+      <span class="duaa-arrow" style="font-size:14px;transition:transform 0.3s ease;">▼</span>
+    </button>
+    <div class="duaa-content" style="display:none;padding:24px 28px;background:linear-gradient(135deg,#fffbea,#fff9f0);direction:rtl;text-align:right;">
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <p style="font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin:0;">"اللَّهُمَّ لا سَهْلَ إِلاَّ ما جَعَلْتَهُ سَهْلاً، وأنْتَ تَجْعَلُ الحَزْنَ إِذَا شِئْتَ سَهْلاً."</p>
+        <p style="font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin:0;">"رَبِّ اشْرَحْ لِي صَدْرِي، وَيَسِّرْ لِي أَمْرِي، وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي، يَفْقَهُوا قَوْلِي."</p>
+        <p style="font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin:0;">"اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا."</p>
+        <p style="font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin:0;">"اللهم إني أسألك فهم النبيين، وحفظ المرسلين والملائكة المقربين، اللهم اجعل ألسنتنا عامرة بذكرك، وقلوبنا بخشيتك، وأسرارنا بطاعتك، إنك على كل شيء قدير."</p>
+        <p style="font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin:0;">"يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله ولا تكلني إلى نفسي طرفة عين."</p>
+        <p style="font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin:0;">"اللهم يا جامع الناس ليوم لا ريب فيه، اجمع علي ضالتي."</p>
+        <p style="font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin:0;">"اللهم إني استودعتك ما قرأت وما حفظت وما تعلمت، فرده عند حاجتي إليه، إنك على كل شيء قدير، وحسبنا الله ونعم الوكيل."</p>
+        <p style="font-family:'Amiri',serif;font-size:17px;line-height:2.1;color:#5a3e00;border-right:3px solid #e8b84b;padding-right:14px;margin:0;">"أستغفر الله، أستغفر الله، أستغفر الله."</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function toggleDuaa(btn) {
+  var content = btn.nextElementSibling;
+  var arrow = btn.querySelector('.duaa-arrow');
+  var isOpen = content.style.display !== 'none';
+  content.style.display = isOpen ? 'none' : 'block';
+  arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+  btn.setAttribute('aria-expanded', String(!isOpen));
+}
+</script>
+<!-- ════════════════════════════════════ -->
+
       <p class="hero-title">Mechanical Engineering Student &nbsp;·&nbsp; Course Notes & Study Materials</p>
 
       <div class="hero-ornament">
@@ -651,6 +685,17 @@
         </div>
       </a>`).join('');
   </script>
+
+
+<!-- ═══════════ القسم الختامي ═══════════ -->
+<div class="closing-section" style="max-width:980px;margin:40px auto 0;padding:0 28px 60px;direction:rtl;text-align:center;">
+  <div style="background:linear-gradient(135deg,#1A1410,#3C3328);border-radius:14px;padding:28px 32px;border-top:4px solid #A8782A;box-shadow:0 8px 32px rgba(26,20,16,0.18);">
+    <p style="font-family:'Amiri',serif;font-size:19px;line-height:2.2;color:#F0ECE3;margin:0;">
+      🤲 ولا تنسوا الصلاة على النبي صلى الله عليه وسلم، والدعاء لإخوانكم في فلسطين وغزة وفي جميع بقاع الأرض، وأن ينصر الله المسلمين المستضعفين. 🤲
+    </p>
+  </div>
+</div>
+<!-- ════════════════════════════════════ -->
 
 </body>
 </html>
