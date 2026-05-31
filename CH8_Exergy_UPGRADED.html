@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Chapter 8 — Exergy | Thermodynamics III</title>
+<title>Chapter 8 — Exergy: Second Law Analysis | Thermodynamics III | Arabic–English Edition</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css"/>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})"></script>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --navy:#0D2545;--navy-mid:#1A3A6B;--blue:#2563EB;--blue-soft:#3B82F6;
@@ -23,13 +23,14 @@
   --page:#F4F6FB;--surface:#FFFFFF;--surface-2:#FAFBFD;
   --sh-xs:0 1px 3px rgba(0,0,0,.06);--sh-sm:0 2px 8px rgba(0,0,0,.07);
   --sh-md:0 4px 20px rgba(0,0,0,.08);--sh-lg:0 8px 32px rgba(0,0,0,.10);
-  --font-serif:'Libre Baskerville',Georgia,serif;
-  --font-sans:'Source Sans 3',sans-serif;
-  --font-mono:'JetBrains Mono','Courier New',monospace;
+  --font-serif:'Playfair Display',Georgia,serif;
+  --font-sans:'Inter','IBM Plex Sans Arabic',sans-serif;
+  --font-mono:'IBM Plex Mono','Courier New',monospace;
+  --font-arabic:'IBM Plex Sans Arabic','Arial',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--page);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.9;-webkit-font-smoothing:antialiased}
+body{background:var(--page);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── HEADER ── */
@@ -39,7 +40,7 @@ body{background:var(--page);color:var(--ink);font-family:var(--font-sans);font-s
 .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
 .header-inner{position:relative;z-index:1;max-width:980px;margin:0 auto}
 .header-eyebrow{font-family:var(--font-mono);font-size:10.5px;letter-spacing:3.5px;color:rgba(255,255,255,.50);text-transform:uppercase;margin-bottom:14px}
-.header-title{font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,2.9rem);font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1.2;margin-bottom:12px}
+.header-title{font-family:var(--font-serif);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px}
 .header-title span{color:#60A5FA}
 .header-divider{width:52px;height:3px;background:linear-gradient(to right,#60A5FA,transparent);border-radius:2px;margin-bottom:14px}
 .header-subtitle{font-size:14px;color:rgba(255,255,255,.62);font-weight:300;margin-bottom:24px;max-width:560px}
@@ -75,34 +76,34 @@ body{background:var(--page);color:var(--ink);font-family:var(--font-sans);font-s
 /* ── SECTION CARDS ── */
 .section-card{background:var(--surface);border:1px solid var(--border-card);border-radius:14px;box-shadow:var(--sh-sm);margin-bottom:24px;overflow:hidden;animation:fadeUp .5s ease both}
 .section-head{background:linear-gradient(to right,var(--blue-pale),var(--surface));padding:16px 32px;border-bottom:1px solid var(--border-card);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.section-tag{background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:1.5px;padding:3px 10px;border-radius:6px;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
+.section-tag{background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:2px;padding:4px 12px;border-radius:6px;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
 .section-title{font-family:var(--font-serif);font-size:.93rem;font-weight:700;color:var(--navy)}
-.section-body{padding:28px 32px 34px}
-.section-body p{margin-bottom:14px;color:var(--ink-700);line-height:1.9}
+.section-body{padding:30px 34px 36px}
+.section-body p{margin-bottom:16px;color:var(--ink-700);line-height:2.0;font-size:15px}
 .section-body p:last-child{margin-bottom:0}
-.sub-heading{font-family:var(--font-serif);color:var(--navy);font-size:.9rem;font-weight:700;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.sub-heading{font-family:var(--font-serif);color:var(--navy);font-size:.95rem;font-weight:700;margin:28px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--blue-border);letter-spacing:0.01em}
 
 /* ── ARABIC MIXED EXPLANATION ── */
-.ar-explain{background:linear-gradient(135deg,#F8FAFF,#EEF4FF);border:1px solid #BFDBFE;border-left:4px solid #3B82F6;border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0;direction:rtl;text-align:right;font-size:14.5px;line-height:2;color:var(--ink-700)}
-.ar-explain .ar-label{font-family:var(--font-mono);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:6px;direction:ltr;text-align:left}
-.ar-explain em{color:var(--navy);font-weight:600;font-style:normal}
+.ar-explain{background:linear-gradient(135deg,#F0F7FF,#E8F2FF);border:1px solid #BFDBFE;border-right:4px solid #2563EB;border-left:1px solid #BFDBFE;border-radius:8px 0 0 8px;padding:16px 20px 16px 16px;margin:18px 0;direction:rtl;text-align:right;font-family:var(--font-arabic);font-size:15px;line-height:2.1;color:var(--ink-700)}
+.ar-explain .ar-label{font-family:var(--font-mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:8px;direction:ltr;text-align:left;background:var(--blue-pale);padding:3px 8px;border-radius:4px;width:fit-content}
+.ar-explain em{color:var(--navy);font-weight:600;font-style:normal;background:rgba(37,99,235,0.06);padding:0 3px;border-radius:3px}
 
 /* ── EQUATIONS — LECTURE vs EXTRA ── */
-.eq-wrap{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:18px 24px;margin:18px 0;text-align:center;overflow-x:auto;position:relative}
+.eq-wrap{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:18px 24px;margin:18px 0;text-align:center;overflow-x:auto;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .eq-wrap .eq-label{position:absolute;top:7px;right:10px;font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:var(--ink-400);text-transform:uppercase}
 .eq-wrap .eq{font-family:var(--font-mono);font-size:1rem;font-weight:500;color:var(--navy);line-height:1.7}
 /* Lecture equation box */
-.eq-lec{background:linear-gradient(135deg,#EAF4FF 0%,#F5FAFF 100%);border:1.5px solid #93C5FD;border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:16px 20px;margin:16px 0;overflow-x:auto;position:relative}
-.eq-lec .eq-badge{display:inline-block;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:8.5px;letter-spacing:1.5px;padding:2px 8px;border-radius:4px;margin-bottom:8px;text-transform:uppercase}
+.eq-lec{background:linear-gradient(135deg,#EAF4FF 0%,#F5FAFF 100%);border:1.5px solid #93C5FD;border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:18px 22px;margin:18px 0;overflow-x:auto;position:relative}
+.eq-lec .eq-badge{display:inline-block;background:var(--navy);color:#fff;font-family:var(--font-mono);font-size:8.5px;letter-spacing:1.5px;padding:3px 10px;border-radius:4px;margin-bottom:10px;text-transform:uppercase}
 .eq-lec .eq-badge.extra{background:var(--amber);color:#fff}
 /* Extra/additional equation box */
 .eq-extra{background:linear-gradient(135deg,#FFFBEB 0%,#FFFDF5 100%);border:1.5px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:16px 20px;margin:16px 0;overflow-x:auto;position:relative}
 .eq-extra .eq-badge{display:inline-block;background:var(--amber);color:#fff;font-family:var(--font-mono);font-size:8.5px;letter-spacing:1.5px;padding:2px 8px;border-radius:4px;margin-bottom:8px;text-transform:uppercase}
 
 /* ── NOTES ── */
-.note{border-left:4px solid;border-radius:0 8px 8px 0;padding:14px 18px;margin:18px 0}
-.note .nh{font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:block}
-.note p,.note ul{margin:0;font-size:14px;line-height:1.8;color:var(--ink-700)}
+.note{border-left:4px solid;border-radius:0 10px 10px 0;padding:14px 20px;margin:20px 0;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.note .nh{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;display:block}
+.note p,.note ul{margin:0;font-size:14px;line-height:1.85;color:var(--ink-700)}
 .note ul{padding-left:18px}
 .note.info{background:var(--blue-pale);border-color:var(--blue-soft)}.note.info .nh{color:var(--blue)}
 .note.warn{background:var(--amber-pale);border-color:var(--amber)}.note.warn .nh{color:var(--amber)}
@@ -112,13 +113,13 @@ body{background:var(--page);color:var(--ink);font-family:var(--font-sans);font-s
 .note.purple{background:var(--purple-pale);border-color:var(--purple)}.note.purple .nh{color:var(--purple)}
 
 /* ── DEFINITIONS ── */
-.tb{background:var(--blue-pale);border-left:4px solid var(--blue-soft);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
-.tb .k{font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--navy)}
-.tb .d{color:var(--ink-400);margin:0 6px}
-.tb .ar{color:var(--ink-700);font-size:14.5px}
+.tb{background:linear-gradient(135deg,var(--blue-pale),#F5F9FF);border-left:4px solid var(--blue-soft);border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0;box-shadow:0 1px 3px rgba(37,99,235,.08)}
+.tb .k{font-family:var(--font-mono);font-size:13.5px;font-weight:700;color:var(--navy)}
+.tb .d{color:var(--ink-400);margin:0 8px}
+.tb .ar{color:var(--ink-700);font-size:14.5px;line-height:1.8}
 
 /* ── STEPS ── */
-.step{background:var(--sage-pale);border-left:3px solid var(--sage-soft);border-radius:0 6px 6px 0;padding:10px 16px;margin:8px 0;font-family:var(--font-mono);font-size:13px;color:var(--ink-700);line-height:1.7}
+.step{background:var(--sage-pale);border-left:3px solid var(--sage-soft);border-radius:0 8px 8px 0;padding:10px 18px;margin:9px 0;font-family:var(--font-mono);font-size:13px;color:var(--ink-700);line-height:1.75}
 .step .ans{color:var(--sage);font-weight:700}
 .step .key{color:var(--navy);font-weight:700}
 
@@ -135,17 +136,18 @@ body{background:var(--page);color:var(--ink);font-family:var(--font-sans);font-s
 .lec-badge-inline{display:inline-flex;align-items:center;gap:5px;background:var(--purple-pale);border:1px solid var(--purple-border);border-radius:5px;padding:2px 8px;font-family:var(--font-mono);font-size:9.5px;font-weight:600;color:var(--purple);letter-spacing:.5px;margin-left:8px}
 .ex-section-label{font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;display:block;margin-top:12px}
 .ex-problem{background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:16px 18px;margin-bottom:16px;color:var(--ink-700);font-size:14.5px;line-height:1.75}
-.ex-given-list,.ex-required-list{list-style:none;padding:0;margin:0 0 14px}
-.ex-given-list li,.ex-required-list li{font-family:var(--font-mono);font-size:13px;color:var(--ink-700);padding:3px 0;display:flex;align-items:baseline;gap:8px}
-.ex-given-list li::before{content:'→';color:var(--blue);font-size:12px;flex-shrink:0}
-.ex-required-list li::before{content:'?';color:var(--amber);font-size:12px;font-weight:700;flex-shrink:0}
-.ex-solution{background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:16px 18px;margin-top:14px}
-.ex-solution p{font-size:14px;color:var(--ink-700);margin-bottom:10px;line-height:1.75}
-.final-answer{background:linear-gradient(to right,var(--amber-pale),#FFFDF5);border:1.5px solid var(--amber-border);border-radius:6px;padding:14px 18px;margin-top:16px;font-family:var(--font-mono);font-size:13.5px;font-weight:600;color:var(--amber-dark)}
-.final-answer .fa-label{font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:6px}
+.ex-given-list,.ex-required-list{list-style:none;padding:0;margin:0 0 16px}
+.ex-given-list li,.ex-required-list li{font-family:var(--font-mono);font-size:13px;color:var(--ink-700);padding:4px 0;display:flex;align-items:baseline;gap:10px;border-bottom:1px dashed var(--border)}
+.ex-given-list li:last-child,.ex-required-list li:last-child{border-bottom:none}
+.ex-given-list li::before{content:'→';color:var(--blue);font-size:12px;flex-shrink:0;font-weight:700}
+.ex-required-list li::before{content:'?';color:var(--amber);font-size:13px;font-weight:900;flex-shrink:0}
+.ex-solution{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-top:16px}
+.ex-solution p{font-size:14px;color:var(--ink-700);margin-bottom:12px;line-height:1.8}
+.final-answer{background:linear-gradient(135deg,var(--amber-pale),#FFFDF8);border:2px solid var(--amber-border);border-radius:10px;padding:16px 20px;margin-top:18px;font-family:var(--font-mono);font-size:13.5px;font-weight:600;color:var(--amber-dark);box-shadow:0 2px 8px rgba(180,83,9,.1)}
+.final-answer .fa-label{font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:8px}
 
 /* ── TABLES ── */
-.tw{overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:16px 0}
+.tw{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:18px 0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
 .tw table{width:100%;border-collapse:collapse}
 .tw thead{background:var(--navy)}
 .tw thead th{color:#fff;font-family:var(--font-mono);font-size:11.5px;font-weight:500;padding:10px 14px;text-align:left;white-space:nowrap}
@@ -172,7 +174,9 @@ body{background:var(--page);color:var(--ink);font-family:var(--font-sans);font-s
 /* ── SUMMARY ── */
 .summary-box{background:linear-gradient(135deg,#0D2545 0%,#1A3A6B 100%);border-radius:12px;padding:26px 30px;margin:20px 0;color:#fff}
 .summary-box h4{font-family:var(--font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#60A5FA;margin-bottom:16px}
-.summary-box .eq-list{list-style:none;padding:0;font-family:var(--font-mono);font-size:13px;color:#E0F2FE;line-height:2.4}
+.summary-box .eq-list{list-style:none;padding:0;font-family:var(--font-mono);font-size:13px;color:#E0F2FE;line-height:2.5}
+.summary-box .eq-list li{padding:2px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.summary-box .eq-list li:last-child{border-bottom:none}
 
 /* ── Q&A ── */
 .qa-section{border:1px solid var(--amber-border);border-radius:14px;overflow:hidden;box-shadow:var(--sh-sm);margin-bottom:24px;animation:fadeUp .55s ease .55s both}
@@ -190,13 +194,13 @@ body{background:var(--page);color:var(--ink);font-family:var(--font-sans);font-s
 .qa-q-text{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.65;flex:1}
 .qa-toggle{font-family:var(--font-mono);font-size:13px;color:var(--amber);flex-shrink:0;margin-top:3px;transition:transform .25s}
 .qa-toggle.open{transform:rotate(90deg)}
-.qa-a{padding:14px 16px;background:var(--surface);display:none;border-top:1px solid var(--border)}
+.qa-a{padding:16px 18px;background:linear-gradient(to bottom,#FAFBFD,var(--surface));display:none;border-top:1px solid var(--border)}
 .qa-a-label{font-family:var(--font-mono);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:6px}
-.qa-a-text{font-size:14.5px;color:var(--ink-700);line-height:1.9}
+.qa-a-text{font-size:14.5px;color:var(--ink-700);line-height:2.1;font-family:var(--font-sans);unicode-bidi:plaintext}
 
 /* ── PRINCIPLE BOX ── */
-.principle-box{background:linear-gradient(135deg,#EAF4FF,#F8FCFF);border:2px solid var(--blue);border-radius:12px;padding:20px 24px;margin:16px 0}
-.principle-title{font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:12px}
+.principle-box{background:linear-gradient(135deg,#EAF4FF,#F0F8FF);border:2px solid var(--blue);border-radius:14px;padding:22px 26px;margin:18px 0;box-shadow:0 2px 10px rgba(37,99,235,.12)}
+.principle-title{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:14px;letter-spacing:.01em}
 
 /* ── LECTURE LEGEND ── */
 .legend-bar{background:var(--purple-pale);border:1px solid var(--purple-border);border-radius:8px;padding:10px 18px;margin-bottom:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-700)}
@@ -209,17 +213,18 @@ body{background:var(--page);color:var(--ink);font-family:var(--font-sans);font-s
 ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:var(--page)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 
 @media(max-width:700px){
-  .page-header{padding:32px 20px 28px}
-  .content-wrap{padding:16px 12px 60px}
-  .nav-inner{padding:0 12px}
+  .page-header{padding:32px 16px 28px}
+  .content-wrap{padding:14px 10px 60px}
+  .nav-inner{padding:0 10px}
   .section-body{padding:16px 14px 20px}
   .section-head{padding:12px 16px}
-  .qa-body{padding:16px 14px}
+  .qa-body{padding:14px 12px}
   .toc-body{padding:14px 16px}
   .toc-grid{grid-template-columns:1fr}
   .fig-row{flex-direction:column}
-  .ex-body{padding:16px}
-  .summary-box{padding:18px 16px}
+  .ex-body{padding:14px}
+  .summary-box{padding:18px 14px}
+  .ar-explain{padding:14px 14px 14px 12px;font-size:14px}
 }
 @media print{
   .sticky-nav{position:static;box-shadow:none}
@@ -233,7 +238,7 @@ body{background:var(--page);color:var(--ink);font-family:var(--font-sans);font-s
 <header class="page-header">
   <div class="grid-overlay"></div>
   <div class="header-inner">
-    <p class="header-eyebrow">Thermodynamics III &nbsp;·&nbsp; Chapter 8 &nbsp;·&nbsp; Merged Edition</p>
+    <p class="header-eyebrow">Thermodynamics III &nbsp;·&nbsp; Chapter 8 &nbsp;·&nbsp; Second Law Analysis &nbsp;·&nbsp; Arabic–English Edition</p>
     <h1 class="header-title"><span>Exergy</span> — Work Potential of Energy</h1>
 
 <!-- ═══════════ قسم الأدعية ═══════════ -->
@@ -270,7 +275,7 @@ function toggleDuaa(btn) {
 <!-- ════════════════════════════════════ -->
 
     <div class="header-divider"></div>
-    <p class="header-subtitle">Second-law analysis: exergy, reversible work, irreversibility, second-law efficiency, and exergy balance — with bilingual explanations (EN + AR).</p>
+    <p class="header-subtitle">Second-law analysis: Exergy, Reversible Work, Irreversibility, Second-Law Efficiency, and Exergy Balance — Arabic–English integrated explanations with all technical terminology in English.</p>
     <div class="header-pills">
       <span class="pill">Exergy &#x2665; Availability</span>
       <span class="pill">Dead State</span>
@@ -323,11 +328,11 @@ function toggleDuaa(btn) {
 
 <!-- LEGEND -->
 <div class="legend-bar">
-  <strong style="color:var(--navy);font-family:var(--font-mono);font-size:11px;letter-spacing:1px">LEGEND:</strong>
+  <strong style="color:var(--navy);font-family:var(--font-mono);font-size:11px;letter-spacing:1.5px">LEGEND:</strong>
   <span class="l-item"><span class="legend-dot-lec"></span> Lecture equation (purple border)</span>
   <span class="l-item"><span class="legend-dot-extra"></span> Additional / extra formula (amber border)</span>
   <span class="l-item"><span class="legend-star">&#9733;</span> Lecture question / example</span>
-  <span class="l-item"><span style="font-family:var(--font-mono);font-size:12px;color:var(--blue)">EN+AR</span> Mixed language explanation</span>
+  <span class="l-item"><span style="font-family:var(--font-mono);font-size:12px;color:var(--blue)">شرح</span> Arabic–English Integrated Explanation</span>
 </div>
 
 <!-- ═══ TOC ═══ -->
@@ -369,8 +374,8 @@ function toggleDuaa(btn) {
 <section class="section-card" id="sec-intro">
   <div class="section-head"><span class="section-tag">Intro</span><h2 class="section-title">Introduction — Why Exergy?</h2></div>
   <div class="section-body">
-    <p>The energy content of the universe is constant, just as its mass content is. Yet at times of crisis we are bombarded with speeches and articles on how to <em>"conserve"</em> energy. As engineers, we know that energy is already conserved. What is <strong>not</strong> conserved is <strong>exergy</strong> — the useful work potential of the energy. Once exergy is wasted, it can never be recovered.</p>
-    <p>When we use energy (to heat our homes, for example), we are not destroying any energy; we are merely converting it to a less useful form — a form of <em>less exergy</em>. Chapter 8 provides the tools to quantify this degradation precisely.</p>
+    <p>تُعدّ كمية الطاقة في الكون ثابتةً تماماً كثبات كتلته. ومع ذلك، كثيراً ما نسمع في أزمات الطاقة عن ضرورة "ترشيد" Energy. كمهندسين، ندرك أن Energy محفوظة فعلاً. ما يُبدَّد هو <strong>Exergy</strong> — أي قدرة الطاقة على الإنتاج الفعلي للشغل المفيد. وما إن تضيع الـ Exergy حتى تستحيل استعادتها من جديد.</p>
+    <p>حين نستخدم الطاقة لتدفئة المنازل مثلاً، لا نُدمِّر أي Energy — نحن فقط نحوِّلها إلى شكل أقل جودةً وأدنى قيمةً، أي شكلٍ يحمل <em>Exergy أقل</em>. يوفر Chapter 8 الأدوات الكمية الدقيقة لقياس هذا التدهور في جودة الطاقة.</p>
     <div class="ar-explain">
       <span class="ar-label">EN + AR — Chapter Overview</span>
       The First Law يخبرنا أن الطاقة محفوظة — لكنه لا يفرق بين high-quality energy (كالكهرباء والشغل) وbetween low-quality energy (كالحرارة المنخفضة). الـ Second Law يصحح هذا النقص من خلال مفهوم <em>Exergy</em>، الذي يجيب على السؤال: كم من هذه الطاقة يمكن تحويله فعلاً إلى شغل مفيد؟ The answer depends on both the system state والـ environment conditions.
@@ -429,14 +434,14 @@ function toggleDuaa(btn) {
   <div class="section-head"><span class="section-tag">§ 8-2</span><h2 class="section-title">Exergy Forms — Kinetic &amp; Potential Energy</h2></div>
   <div class="section-body">
     <h3 class="sub-heading">Exergy of Kinetic Energy</h3>
-    <p>Kinetic energy is a form of mechanical energy that can be converted <strong>directly</strong> into work. It is independent of the temperature and pressure of the environment.</p>
+    <p>تُمثِّل Kinetic Energy شكلاً من أشكال الطاقة الميكانيكية القابلة للتحويل <strong>المباشر</strong> إلى شغل مفيد. وهي مستقلة تماماً عن Temperature وPressure في البيئة المحيطة.</p>
     <div class="eq-lec">
       <span class="eq-badge">&#9733; Lecture Equation</span>
       <div style="text-align:center;padding:6px 0">$$x_{ke} = ke = \frac{V^2}{2} \quad \text{(kJ/kg)}$$</div>
     </div>
 
     <h3 class="sub-heading">Exergy of Potential Energy</h3>
-    <p>Potential energy is also mechanical energy and can be converted directly to work.</p>
+    <p>تُعدّ Potential Energy أيضاً طاقةً ميكانيكيةً خالصةً، تنتقل بدورها إلى شغل مباشرةً دون أي قيود من القانون الثاني.</p>
     <div class="eq-lec">
       <span class="eq-badge">&#9733; Lecture Equation</span>
       <div style="text-align:center;padding:6px 0">$$x_{pe} = pe = gz \quad \text{(kJ/kg)}$$</div>
@@ -458,7 +463,7 @@ function toggleDuaa(btn) {
 <section class="section-card" id="sec-8-3">
   <div class="section-head"><span class="section-tag">§ 8-3</span><h2 class="section-title">Useful Work &amp; Surroundings Work</h2></div>
   <div class="section-body">
-    <p>The work done by work-producing devices is not always entirely in a usable form. For a piston-cylinder device, part of the boundary work pushes atmospheric air away — this <em>surroundings work</em> is unavailable.</p>
+    <p>لا يكون الشغل المنتَج دائماً في صورة قابلة للاستخدام بالكامل. ففي نظام المكبس الأسطواني (piston-cylinder)، يُصرَف جزء من Boundary Work في دفع هواء الجو بعيداً — وهذا الجزء يُسمّى <em>Surroundings Work</em> ويُعدّ غير مستثمَر.</p>
 
     <div class="eq-lec">
       <span class="eq-badge">&#9733; Lecture Equation</span>
@@ -523,7 +528,7 @@ function toggleDuaa(btn) {
 <section class="section-card" id="sec-8-5">
   <div class="section-head"><span class="section-tag">§ 8-5</span><h2 class="section-title">Second-Law Efficiency $\eta_{II}$</h2></div>
   <div class="section-body">
-    <p>The second-law efficiency measures performance of a device <strong>relative to its performance under reversible conditions</strong> for the same end states. Two heat engines with identical $\eta_{th}=30\%$ can have vastly different second-law efficiencies.</p>
+    <p>تقيس Second-Law Efficiency أداءَ الجهاز <strong>نسبةً إلى أدائه في الظروف العكوسة</strong> لنفس الحالتين الابتدائية والنهائية. فمحركان حراريان بكفاءة قانون أول متطابقة $\eta_{th}=30\%$ قد تختلف Second-Law Efficiency لكليهما اختلافاً جوهرياً، مما يكشف مدى اقتراب كل منهما من الأداء المثالي (Reversible).</p>
 
     <h3 class="sub-heading">Work-Producing Devices (Heat Engines)</h3>
     <div class="eq-lec">
@@ -564,7 +569,7 @@ function toggleDuaa(btn) {
 <section class="section-card" id="sec-8-6">
   <div class="section-head"><span class="section-tag">§ 8-6</span><h2 class="section-title">Exergy of a Closed System (Nonflow Exergy)</h2></div>
   <div class="section-body">
-    <p>Applying energy conservation and integrating from the given state to the dead state, the total useful work (exergy) of a closed system is:</p>
+    <p>بتطبيق موازنة الطاقة (Energy Balance) والتكامل من الحالة المعطاة وصولاً إلى Dead State بصورة عكوسة تماماً، يكون إجمالي الشغل المفيد (أي Exergy) لـ Closed System هو:</p>
 
     <div class="eq-lec">
       <span class="eq-badge">&#9733; Lecture Equation — Total Useful Work</span>
@@ -599,7 +604,7 @@ function toggleDuaa(btn) {
 <section class="section-card" id="sec-8-7">
   <div class="section-head"><span class="section-tag">§ 8-7</span><h2 class="section-title">Flow (Stream) Exergy &#968;</h2></div>
   <div class="section-body">
-    <p>Flowing fluid carries additional flow work $Pv$. The exergy of flow work is the excess above what is needed to push against the atmosphere at $P_0$:</p>
+    <p>يحمل السائل المتدفق طاقة إضافية هي Flow Work المساوية لـ $Pv$. أما Exergy لـ Flow Work فيساوي ما يزيد عن حد الضغط الجوي $P_0 v$ — أي الشغل الفعّال الحقيقي فوق مستوى المرجع البيئي:</p>
 
     <div class="eq-lec">
       <span class="eq-badge">&#9733; Lecture Equation — Exergy of Flow Work</span>
@@ -642,7 +647,7 @@ function toggleDuaa(btn) {
 <section class="section-card" id="sec-8-8">
   <div class="section-head"><span class="section-tag">§ 8-8</span><h2 class="section-title">Exergy Transfer by Heat, Work &amp; Mass</h2></div>
   <div class="section-body">
-    <p>Exergy transfers via the same three mechanisms as energy. Understanding each is essential for writing the exergy balance.</p>
+    <p>ينتقل Exergy عبر الآليات الثلاث ذاتها التي تنتقل بها Energy. وفهم كل آلية منها أمرٌ ضروري لصياغة Exergy Balance بصورة صحيحة ودقيقة.</p>
 
     <h3 class="sub-heading">1. Exergy Transfer by Heat</h3>
     <div class="eq-lec">
@@ -691,7 +696,7 @@ function toggleDuaa(btn) {
 <section class="section-card" id="sec-8-9">
   <div class="section-head"><span class="section-tag">§ 8-9</span><h2 class="section-title">The Decrease of Exergy Principle</h2></div>
   <div class="section-body">
-    <p>The exergy of an isolated system during a process always <strong>decreases</strong> or, in the limiting case of a reversible process, remains constant.</p>
+    <p>يتناقص Exergy الخاص بنظام معزول (Isolated System) دائماً خلال أي عملية حقيقية، أو يبقى ثابتاً في الحالة المثلى للعملية العكوسة تماماً. هذا المبدأ موازٍ لمبدأ تزايد Entropy ولكنه أكثر فائدةً من منظور هندسي.</p>
 
     <div class="eq-lec">
       <span class="eq-badge">&#9733; Lecture Equation</span>
@@ -1168,7 +1173,7 @@ function toggleDuaa(btn) {
   <div class="section-head"><span class="section-tag">Summary</span><h2 class="section-title">Chapter 8 — Key Equations &amp; Concepts</h2></div>
   <div class="section-body">
     <div class="summary-box">
-      <h4>&#9632; Master Reference — All Chapter 8 Equations</h4>
+      <h4 style="font-family:var(--font-serif);font-size:1.1rem;letter-spacing:.02em">&#9632; Master Reference — All Chapter 8 Equations</h4>
       <ul class="eq-list">
         <li>&#9733; Dead State: $T=T_0,\ P=P_0,\ V=0,\ z=0$ &rarr; Exergy = 0</li>
         <li>&#9733; $x_{ke}=V^2/2$, &nbsp; $x_{pe}=gz$ &nbsp; (100% exergy, no 2nd-Law restriction)</li>
