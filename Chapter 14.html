@@ -2277,35 +2277,118 @@ $\therefore \dot{m}_a = \dfrac{\dot{m}_3(h_3 - h_4)}{(h_2 - h_1) - (\psi_2-\psi_
   <div class="ucrd-banner ucrd-sh">
     <div class="ucrd-tag">PROBLEM 11  ·  Sheet 3</div>
     <div class="ucrd-title">Cooling with Vapor-Compression Refrigeration &mdash; Cooling Capacity &amp; Entropy</div>
-    <div class="ucrd-qbox">1000 m&sup3; of atmospheric air at <strong>1 atm</strong>, <strong>32&deg;C</strong>, <strong>95% RH</strong> is to be cooled to <strong>24&deg;C</strong> and <strong>60% RH</strong> using an ideal vapor-compression refrigeration cycle with R-134a. Evaporator at 4&deg;C; condenser saturation temperature = 39.4&deg;C. Calculate (a) the cooling coil capacity in kJ and (b) total entropy generation in the evaporator.</div>
+    <div class="ucrd-qbox" dir="ltr" style="text-align: left;">11- 1000 m&sup3; of atmospheric air at 1 atm, 32&deg;C, and 95 percent relative humidity is cooled to 24&deg;C and 60% relative humidity. A simple ideal vapor-compression refrigeration system using refrigerant-134a as the working fluid is used to provide the cooling required. It operates its evaporator at &minus;8&deg;C and its condenser at a saturation temperature of 39.4&deg;C. The condenser rejects its heat to the atmospheric air. Calculate:<br><br>a) the cooling coil capacity in kJ<br>b) the total entropy generation in the evaporator section.</div>
   </div>
   <div class="ucrd-body">
-    <div class="fig" style="margin:0 0 18px;"><img src="q11_refrigeration_cycle.png" alt="FIGURE — Vapor-Compression Refrigeration Cycle cooling air from 32°C/95%RH to 24°C/60%RH" style="max-width:420px;"><figcaption style="font-size:12px;color:#999;margin-top:6px;direction:ltr">Schematic: Vapor-compression refrigeration system cooling atmospheric air from 32°C, 95% RH to 24°C, 60% RH.</figcaption></div>
+    <div class="fig" style="margin:0 0 18px;"><img src="q11_refrigeration_cycle.png" alt="FIGURE — Vapor-Compression Refrigeration Cycle cooling air from 32°C/95%RH to 24°C/60%RH" style="max-width:420px;"><figcaption style="font-size:12px;color:#999;margin-top:6px;direction:ltr">Schematic: Vapor-compression refrigeration system cooling atmospheric air from 32°C, 95% RH to 24°C, 60% RH. Evaporator at −8°C, Condenser at 39.4°C.</figcaption></div>
+
+    <!-- ─── GIVEN ─── -->
     <div class="ucrd-sec ugiven">
       <span class="ucrd-sec-lbl">Given</span>
-      <div class="gv-grid"><span>V<sub>room</sub>=1000 m&sup3;, P=1 atm</span>
-<span>State 1: T<sub>1</sub>=32&deg;C, &phi;<sub>1</sub>=95%</span>
-<span>State 2: T<sub>2</sub>=24&deg;C, &phi;<sub>2</sub>=60%</span>
-<span>R-134a: T<sub>evap</sub>=4&deg;C, T<sub>cond,sat</sub>=39.4&deg;C</span>
-<span>From chart: h<sub>1</sub>=111.0 kJ/kg, &psi;<sub>1</sub>=0.0289 kg/kg, v<sub>1</sub>=0.9131 m&sup3;/kg</span>
-<span>h<sub>2</sub>=55.5 kJ/kg, &psi;<sub>2</sub>=0.01128 kg/kg</span>
-<span>h<sub>f@4&deg;C</sub>=16.29 kJ/kg</span>
-<span>R-134a props at 4&deg;C: h<sub>f</sub>=206.75, h<sub>fg</sub>=204.59 kJ/kg, h<sub>g</sub>=411.34 kJ/kg</span>
-<span>s<sub>f@4&deg;C</sub>=0.7723, s<sub>g@4&deg;C</sub>=1.7281 kJ/kg&middot;K</span>
-<span>s<sub>f@39.4&deg;C</sub>=1.1696, s<sub>g@39.4&deg;C</sub>=1.6754 kJ/kg&middot;K</span></div>
+      <div class="gv-grid">
+        <span>V = 1000 m³, P = 1 atm = 101.325 kPa</span>
+        <span>State 1 (inlet): T<sub>1</sub> = 32°C = 305.15 K, φ<sub>1</sub> = 95%</span>
+        <span>State 2 (outlet): T<sub>2</sub> = 24°C = 297.15 K, φ<sub>2</sub> = 60%</span>
+        <span>P<sub>sat</sub>(32°C) = 4.759 kPa &nbsp;→&nbsp; P<sub>v1</sub> = 0.95 × 4.759 = 4.521 kPa</span>
+        <span>P<sub>sat</sub>(24°C) = 2.985 kPa &nbsp;→&nbsp; P<sub>v2</sub> = 0.60 × 2.985 = 1.791 kPa</span>
+        <span>h<sub>g</sub>(32°C) = 2617.5 kJ/kg &nbsp;|&nbsp; s<sub>g</sub>(32°C) = 8.3304 kJ/kg·K</span>
+        <span>h<sub>g</sub>(24°C) = 2602.9 kJ/kg &nbsp;|&nbsp; s<sub>g</sub>(24°C) = 8.5785 kJ/kg·K</span>
+        <span>h<sub>f</sub>(24°C) = 100.59 kJ/kg &nbsp;|&nbsp; s<sub>f</sub>(24°C) = 0.3540 kJ/kg·K</span>
+        <span>R-134a @ T<sub>evap</sub> = −8°C: h<sub>f</sub>=42.77, h<sub>fg</sub>=204.59, h<sub>g</sub>=247.23 kJ/kg</span>
+        <span>s<sub>f</sub>(−8°C)=0.1739, s<sub>fg</sub>=0.7543, s<sub>g</sub>=0.9281 kJ/kg·K</span>
+        <span>R-134a @ T<sub>cond</sub> = 39.4°C: h<sub>f</sub>=108.26 kJ/kg, s<sub>f</sub>=0.3954 kJ/kg·K</span>
+      </div>
     </div>
+
+    <!-- ─── REQUIRED ─── -->
     <div class="ucrd-sec ureq">
       <span class="ucrd-sec-lbl">Required</span>
-      <div class="req-line">(a) Cooling capacity Q<sub>coil</sub> [kJ] &nbsp;&nbsp;(b) S<sub>gen</sub> in evaporator [kJ/K]</div>
+      <div class="req-line">(a) Cooling coil capacity Q<sub>L</sub> [kJ] &nbsp;&nbsp; (b) Total S<sub>gen</sub> in evaporator section [kJ/K]</div>
     </div>
+
+    <!-- ─── SOLUTION ─── -->
     <div class="ucrd-sec usol">
       <span class="ucrd-sec-lbl">Solution</span>
-      <div class="sol-math"><div class="eq">$$m_a = \frac{P_{a1} V}{R_a T_1}$$</div><p style="direction:ltr;font-size:13px;margin:2px 0 4px;">P<sub>v1</sub> = (0.95)(4.7596) = 4.522 kPa &nbsp;&nbsp;P<sub>a1</sub> = 101.325&minus;4.522 = 96.803 kPa</p><div class="eq">$$m_a = \frac{(96.803)(1000)}{(0.287)(305)} = \frac{96803}{87.535} = 1105.9\ \text{kg}$$</div><div class="eq">$$m_{w1} = \psi_1 m_a = (0.0289)(1105.9) = 31.96\ \text{kg}$$</div><div class="eq">$$m_{w2} = \psi_2 m_a = (0.01128)(1105.9) = 12.47\ \text{kg}$$</div><div class="eq">$$m_{cond} = m_{w1}-m_{w2} = 31.96-12.47 = 19.49\ \text{kg}$$</div><div class="eq">$$h_{1}=111.0\ \text{kJ/kg},\quad h_{2}=55.5\ \text{kJ/kg},\quad h_{f@4°C}=16.29\ \text{kJ/kg}$$</div><span class="sol-part">(a)</span><div class="eq">$$Q_{coil} = m_a(h_1-h_2) - m_{cond}\,h_{f@4°C}$$</div><div class="eq">$$= (1105.9)(111.0-55.5)-(19.49)(16.29)=(1105.9)(55.5)-317.5=61377-317.5=\boxed{61060\ \text{kJ}}$$</div><span class="sol-part">(b)</span><div class="eq">$$Q_{evap}=Q_{coil}=61060\ \text{kJ}$$</div><div class="eq">$$S_{gen} = \frac{Q_{evap}}{T_{evap}} - \Delta S_{air}$$</div><p style="direction:ltr;font-size:13px;margin:2px 0;">(Using T<sub>evap</sub>=4+273=277 K as low-temperature reservoir)</p><div class="eq">$$S_{gen} = \frac{61060}{277} + \Delta S_{air+water} = 220.4 + \Delta S_{system} \approx \boxed{220\ \text{kJ/K}}$$</div></div>
+      <div class="sol-math">
+
+        <!-- ── Psychrometric Properties ── -->
+        <span class="sol-part" style="font-size:14px;">Step 1 — Psychrometric Properties</span>
+
+        <div class="eq">$$\omega_1 = \frac{0.622\,P_{v1}}{P - P_{v1}} = \frac{0.622 \times 4.521}{101.325 - 4.521} = \frac{2.812}{96.804} = 0.02908\ \text{kg/kg}_{da}$$</div>
+
+        <div class="eq">$$\omega_2 = \frac{0.622\,P_{v2}}{P - P_{v2}} = \frac{0.622 \times 1.791}{101.325 - 1.791} = \frac{1.114}{99.534} = 0.01120\ \text{kg/kg}_{da}$$</div>
+
+        <div class="eq">$$m_{da} = \frac{P_{a1}\,V}{R_a\,T_1} = \frac{96804 \times 1000}{287 \times 305.15} = \frac{96{,}804}{87{,}578} = 1102.5\ \text{kg}$$</div>
+
+        <div class="eq">$$m_{cond} = m_{da}(\omega_1 - \omega_2) = 1102.5 \times (0.02908 - 0.01120) = 1102.5 \times 0.01788 = 19.71\ \text{kg}$$</div>
+
+        <!-- ── Enthalpy ── -->
+        <span class="sol-part" style="font-size:14px;">Step 2 — Moist Air Enthalpies</span>
+
+        <div class="eq">$$h_1 = c_{p,a}\,T_1 + \omega_1\,h_{g1} = 1.005 \times 32 + 0.02908 \times 2617.5 = 32.16 + 76.12 = 108.22\ \text{kJ/kg}_{da}$$</div>
+
+        <div class="eq">$$h_2 = c_{p,a}\,T_2 + \omega_2\,h_{g2} = 1.005 \times 24 + 0.01120 \times 2602.9 = 24.12 + 29.15 = 53.27\ \text{kJ/kg}_{da}$$</div>
+
+        <!-- ── Part (a) ── -->
+        <span class="sol-part">(a)</span>
+        <p style="direction:ltr;font-size:13px;margin:4px 0;">First Law on cooling coil control volume — condensate leaves at T₂ = 24°C:</p>
+
+        <div class="eq">$$Q_L = m_{da}(h_1 - h_2) - m_{cond}\,h_{f}(T_2)$$</div>
+
+        <div class="eq">$$= 1102.5 \times (108.22 - 53.27) - 19.71 \times 100.59$$</div>
+
+        <div class="eq">$$= 1102.5 \times 54.95 - 1982.6 = 60{,}572 - 1{,}983 = \boxed{58{,}589\ \text{kJ} \approx 58{,}600\ \text{kJ}}$$</div>
+
+        <!-- ── R-134a Cycle ── -->
+        <span class="sol-part" style="font-size:14px;">Step 3 — R-134a Refrigeration Cycle States</span>
+
+        <p style="direction:ltr;font-size:13px;margin:4px 0;">State 1-R (sat. vapor out of evaporator, −8°C): &nbsp; h<sub>1R</sub> = 247.23 kJ/kg, s<sub>1R</sub> = 0.9281 kJ/kg·K</p>
+        <p style="direction:ltr;font-size:13px;margin:4px 0;">State 3-R (sat. liquid out of condenser, 39.4°C): &nbsp; h<sub>3R</sub> = 108.26 kJ/kg, s<sub>3R</sub> = 0.3954 kJ/kg·K</p>
+        <p style="direction:ltr;font-size:13px;margin:4px 0;">State 4-R (after expansion valve, −8°C, throttling → h<sub>4R</sub> = h<sub>3R</sub>):</p>
+
+        <div class="eq">$$x_4 = \frac{h_{4R} - h_f}{h_{fg}} = \frac{108.26 - 42.77}{204.59} = \frac{65.49}{204.59} = 0.3202$$</div>
+
+        <div class="eq">$$s_4 = s_f + x_4\,s_{fg} = 0.1739 + 0.3202 \times 0.7543 = 0.1739 + 0.2415 = 0.4154\ \text{kJ/kg·K}$$</div>
+
+        <div class="eq">$$q_L = h_{1R} - h_{4R} = 247.23 - 108.26 = 138.97\ \text{kJ/kg}$$</div>
+
+        <div class="eq">$$m_R = \frac{Q_L}{q_L} = \frac{58{,}589}{138.97} = 421.6\ \text{kg}$$</div>
+
+        <!-- ── Part (b) ── -->
+        <span class="sol-part">(b)</span>
+        <p style="direction:ltr;font-size:13px;margin:4px 0;">Second Law — entropy balance on evaporator section:</p>
+
+        <div class="eq">$$S_{gen} = \Delta S_{refrigerant} + \Delta S_{air} \geq 0$$</div>
+
+        <p style="direction:ltr;font-size:13px;margin:6px 0;font-weight:600;">① ΔS of refrigerant (State 4 → State 1, absorbs heat):</p>
+        <div class="eq">$$\Delta S_R = m_R\,(s_{1R} - s_{4R}) = 421.6 \times (0.9281 - 0.4154) = 421.6 \times 0.5127 = +216.2\ \text{kJ/K}$$</div>
+
+        <p style="direction:ltr;font-size:13px;margin:6px 0;font-weight:600;">② ΔS of moist air (State 1 → State 2, loses heat and moisture):</p>
+        <p style="direction:ltr;font-size:13px;margin:2px 0;">Dry air component:</p>
+        <div class="eq">$$\Delta s_a = c_{p,a}\ln\!\frac{T_2}{T_1} = 1.005\ln\!\frac{297.15}{305.15} = 1.005 \times (-0.02613) = -0.02625\ \text{kJ/kg·K}$$</div>
+
+        <p style="direction:ltr;font-size:13px;margin:2px 0;">Water vapor component:</p>
+        <div class="eq">$$\Delta s_v = \omega_2 s_{g2} - \omega_1 s_{g1} - (\omega_1-\omega_2)s_{f2}$$</div>
+        <div class="eq">$$= 0.01120\times8.5785 - 0.02908\times8.3304 - 0.01788\times0.3540$$</div>
+        <div class="eq">$$= 0.09608 - 0.24224 - 0.00633 = -0.15249\ \text{kJ/kg·K}$$</div>
+
+        <div class="eq">$$\Delta S_{air} = m_{da}\,(\Delta s_a + \Delta s_v) = 1102.5 \times (-0.02625 - 0.15249) = 1102.5 \times (-0.17874) = -197.1\ \text{kJ/K}$$</div>
+
+        <p style="direction:ltr;font-size:13px;margin:6px 0;font-weight:600;">③ Total entropy generation:</p>
+        <div class="eq">$$S_{gen} = \Delta S_R + \Delta S_{air} = (+216.2) + (-197.1) = \boxed{+19.1\ \text{kJ/K}}$$</div>
+
+        <p style="direction:ltr;font-size:13px;margin:6px 0;color:#2e7d32;font-weight:600;">✅ S<sub>gen</sub> > 0 — consistent with 2nd Law (irreversibility due to heat transfer across a finite temperature difference from 32°C air to −8°C refrigerant).</p>
+
+      </div>
     </div>
+
+    <!-- ─── FINAL ANSWER ─── -->
     <div class="ucrd-sec uans">
       <span class="ucrd-sec-lbl">Final Answer</span>
-      <div class="ans-grid"><div class="ans-row">(a) Q<sub>coil</sub> &asymp; 61 060 kJ</div>
-<div class="ans-row">(b) S<sub>gen</sub> &asymp; 220 kJ/K  (evaporator entropy generation)</div></div>
+      <div class="ans-grid">
+        <div class="ans-row">(a) Q<sub>L</sub> = 58,589 kJ &asymp; <strong>58,600 kJ</strong></div>
+        <div class="ans-row">(b) S<sub>gen</sub> = <strong>19.1 kJ/K</strong> &nbsp;(evaporator section)</div>
+      </div>
     </div>
   </div>
 </div>
