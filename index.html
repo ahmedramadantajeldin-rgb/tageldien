@@ -4,212 +4,283 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Thermodynamics 3 — Academic course dashboard with chapters 8, 13, 14, and 15.">
+    <meta name="theme-color" content="#0A1A2E">
     <title>Thermodynamics 3 — Course Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --ink:        #08121F;   /* hero background (deep thermal navy) */
+            --ember:      #E0793A;   /* heat accent */
+            --copper:     #B07D4A;   /* original identity accent */
+            --copper-dk:  #8A5A2B;   /* accent for text on light surfaces */
+            --paper:      #EEEAE3;   /* page background (original) */
+            --card:       #F7F3EC;
+            --line:       #E0D9CF;
+            --text:       #1A1A1A;
+            --muted:      #7A7167;
+            --radius:     14px;
+        }
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         html { font-size: 16px; scroll-behavior: smooth; }
 
         body {
-            font-family: 'Jost', sans-serif;
-            background-color: #EEEAE3;
-            color: #1A1A1A;
+            font-family: 'Jost', system-ui, sans-serif;
+            background-color: var(--paper);
+            color: var(--text);
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* ── WRAPPER ── */
-        .page {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 72px 28px 60px;
-            flex: 1;
-        }
-
-        /* ── HEADER ── */
-        .header {
+        /* ───────────── HERO ───────────── */
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            /* cold reservoir (left) → hot reservoir (right) */
+            background: linear-gradient(105deg, #07111E 0%, #0B1F36 36%, #1D1B30 64%, #3A170F 100%);
+            color: #F4F8FD;
+            min-height: clamp(300px, 46vh, 460px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            margin-bottom: 56px;
+            padding: 72px 24px 80px;
+            border-radius: 0 0 32px 32px;
         }
+
+        /* hot side: heat rising from the bottom-right */
+        .hero-glow {
+            position: absolute;
+            inset: auto -10% -50% -10%;
+            height: 120%;
+            background:
+                radial-gradient(ellipse 55% 55% at 76% 100%, rgba(255,107,44,.55), rgba(255,107,44,0) 70%),
+                radial-gradient(ellipse 24% 32% at 82% 100%, rgba(255,190,90,.42), rgba(255,190,90,0) 70%);
+            animation: breathe 9s ease-in-out infinite alternate;
+            z-index: -3;
+        }
+
+        /* cold side: cool light from the top-left */
+        .hero-cold {
+            position: absolute;
+            inset: -50% 45% auto -10%;
+            height: 120%;
+            background: radial-gradient(ellipse 60% 55% at 30% 0%, rgba(70,140,210,.40), rgba(70,140,210,0) 70%);
+            animation: breathe 11s ease-in-out infinite alternate-reverse;
+            z-index: -3;
+        }
+
+        /* T–s diagram: vapor dome + Carnot cycle, with gas molecules and rising heat */
+        .hero-art {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .grid-line { stroke: rgba(180,210,240,.07); stroke-width: 1; fill: none; }
+        .axis      { stroke: rgba(200,220,245,.20); stroke-width: 1.2; fill: none; }
+        .dome      { fill: none; stroke: url(#domeGrad); stroke-width: 2; stroke-linecap: round; }
+        .cyc-edge  { fill: none; stroke: rgba(235,243,252,.30); stroke-width: 1.5; }
+        .cyc-hot   { fill: none; stroke: #FF8A4C; stroke-width: 2.6; stroke-linecap: round; }
+        .cyc-cold  { fill: none; stroke: #6FAEE6; stroke-width: 2.6; stroke-linecap: round; }
+        .cyc-flow {
+            fill: none;
+            stroke: #FFD08A;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 9 91;
+            animation: flow 10s linear infinite;
+        }
+        .cyc-node  { fill: #FFE2B8; }
+
+        .mol { animation: drift 14s ease-in-out infinite alternate; }
+        .mol.m2 { animation-duration: 18s; animation-delay: -6s; }
+        .mol.m3 { animation-duration: 16s; animation-delay: -11s; }
+        .mol circle.c { fill: #7DB8EC; opacity: .55; }
+        .mol circle.h { fill: #FFB45E; opacity: .60; }
+
+        .heat { fill: none; stroke: #FFA55E; stroke-width: 2; stroke-linecap: round; opacity: 0; animation: heatrise 7s ease-in-out infinite; }
+        .heat.h2 { animation-delay: -2.3s; }
+        .heat.h3 { animation-delay: -4.6s; }
+
+        /* keeps the title legible over the artwork */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 52% 62% at 50% 50%, rgba(7,17,30,.80), rgba(7,17,30,0) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero-inner { max-width: 720px; }
 
         .course-label {
-            font-size: 10.5px;
-            font-weight: 600;
-            letter-spacing: 3.5px;
-            text-transform: uppercase;
-            color: #B07D4A;
-            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #FFC48A;
+            margin-bottom: 14px;
+            animation: rise .8s cubic-bezier(.2,.7,.2,1) .05s backwards;
         }
 
         .course-title {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(46px, 10vw, 72px);
+            font-size: clamp(52px, 13vw, 96px);
             font-weight: 800;
             line-height: 1;
             letter-spacing: -1px;
-            color: #1A1A1A;
-            margin-bottom: 14px;
-        }
-
-        .course-title em {
-            font-style: italic;
-            color: #B07D4A;
-            font-weight: 700;
+            color: #FFFFFF;
+            text-shadow: 0 2px 24px rgba(7,17,30,.55);
+            margin-bottom: 16px;
+            animation: rise .9s cubic-bezier(.2,.7,.2,1) .15s backwards;
         }
 
         .course-subtitle {
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 300;
-            letter-spacing: 0.4px;
-            color: #7A7167;
-            margin-bottom: 28px;
+            letter-spacing: .4px;
+            color: rgba(236,244,252,.86);
+            animation: rise .9s cubic-bezier(.2,.7,.2,1) .3s backwards;
         }
 
-        .header-rule {
+        /* ───────────── CHAPTERS ───────────── */
+        .page {
+            width: 100%;
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 52px 24px 72px;
+            flex: 1;
+        }
+
+        .block + .block { margin-top: 44px; }
+
+        .block-label {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            gap: 14px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            margin-bottom: 18px;
         }
-
-        .header-rule::before,
-        .header-rule::after {
+        .block-label::after {
             content: '';
-            display: block;
-            width: 48px;
+            flex: 1;
             height: 1px;
-            background: #C8BEB2;
+            background: var(--line);
         }
 
-        .header-dot {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: #B07D4A;
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
         }
 
-        /* ── SECTION LABEL ── */
-        .section-label {
-            font-size: 9.5px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #9A9189;
-            margin-bottom: 16px;
-            padding-left: 2px;
-        }
-
-        /* ── CHAPTER LIST ── */
-        .chapter-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .chapter-row {
+        .card {
+            position: relative;
             display: flex;
             align-items: center;
-            gap: 18px;
-            padding: 18px 20px;
-            background: #F4F0E9;
-            border: 1px solid #E0D9CF;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            text-decoration: none;
+            gap: 14px;
+            min-height: 72px;
+            padding: 14px 16px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
             color: inherit;
-            transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-            cursor: pointer;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease, background-color .22s ease;
+            animation: rise .7s cubic-bezier(.2,.7,.2,1) backwards;
+            animation-delay: calc(.45s + var(--i, 0) * 80ms);
         }
 
-        .chapter-row:last-child { margin-bottom: 0; }
-
-        .chapter-row:hover {
-            background: #EDE8DF;
-            border-color: #C8BEB2;
-            transform: translateX(3px);
-        }
-
-        .chapter-num {
-            font-size: 11px;
-            font-weight: 600;
-            color: #AFA89E;
-            letter-spacing: 0.5px;
-            width: 20px;
+        .card-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(176,125,74,.13);
+            display: grid;
+            place-items: center;
             flex-shrink: 0;
+            transition: background-color .22s ease, transform .22s ease;
         }
 
-        .chapter-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #E0D8F0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .chapter-icon svg {
-            width: 17px;
-            height: 17px;
-            stroke: #6B5FA0;
+        .card-icon svg {
+            width: 19px;
+            height: 19px;
+            stroke: var(--copper-dk);
             fill: none;
             stroke-width: 1.8;
             stroke-linecap: round;
             stroke-linejoin: round;
+            transition: stroke .22s ease;
         }
 
-        /* icon color variants */
-        .chapter-row:nth-child(1) .chapter-icon { background: #DCE8F5; }
-        .chapter-row:nth-child(1) .chapter-icon svg { stroke: #4A7AAF; }
+        .card-text { flex: 1; min-width: 0; }
 
-        .chapter-row:nth-child(2) .chapter-icon { background: #F5EDDC; }
-        .chapter-row:nth-child(2) .chapter-icon svg { stroke: #AF8040; }
-
-        .chapter-row:nth-child(3) .chapter-icon { background: #DCF0E8; }
-        .chapter-row:nth-child(3) .chapter-icon svg { stroke: #3D9E72; }
-
-        .chapter-row:nth-child(4) .chapter-icon { background: #F5DCDC; }
-        .chapter-row:nth-child(4) .chapter-icon svg { stroke: #B04A4A; }
-
-        .chapter-text {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .chapter-name {
-            font-size: 14.5px;
-            font-weight: 600;
-            color: #1A1A1A;
+        .card-kicker {
+            display: block;
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--copper-dk);
             margin-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
-        .chapter-desc {
-            font-size: 11.5px;
-            font-weight: 400;
-            color: #9A9189;
-            letter-spacing: 0.2px;
-        }
-
-        .chapter-arrow {
+        .card-name {
+            display: block;
             font-size: 16px;
-            color: #BEB5AA;
-            flex-shrink: 0;
-            transition: color 0.2s ease;
+            font-weight: 600;
+            line-height: 1.25;
+            color: var(--text);
         }
 
-        .chapter-row:hover .chapter-arrow { color: #7A7167; }
+        .card-chevron {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            stroke: #BEB5AA;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform .22s ease, stroke .22s ease;
+        }
 
-        /* ── FOOTER ── */
+        /* hover only where a real pointer exists */
+        @media (hover: hover) {
+            .card:hover {
+                transform: translateY(-3px);
+                border-color: rgba(176,125,74,.55);
+                background: #FBF8F2;
+                box-shadow: 0 14px 28px -16px rgba(90,52,20,.38);
+            }
+            .card:hover .card-icon { background: var(--copper); }
+            .card:hover .card-icon svg { stroke: #FFF8EE; }
+            .card:hover .card-chevron { transform: translateX(3px); stroke: var(--copper-dk); }
+        }
+
+        .card:active { transform: scale(.985); }
+
+        .card:focus-visible {
+            outline: 2px solid var(--copper);
+            outline-offset: 3px;
+        }
+
+        /* ───────────── FOOTER ───────────── */
         footer {
             text-align: center;
             padding: 24px 28px 32px;
@@ -217,98 +288,209 @@
         }
 
         .footer-text {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 400;
-            color: #AFA89E;
-            letter-spacing: 0.3px;
+            color: #8F877D;
+            letter-spacing: .3px;
         }
 
         .footer-text strong {
-            color: #B07D4A;
+            color: var(--copper-dk);
             font-weight: 600;
         }
 
-        /* ── RESPONSIVE ── */
+        /* ───────────── MOTION ───────────── */
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: none; }
+        }
+        @keyframes flow {
+            from { stroke-dashoffset: 0; }
+            to   { stroke-dashoffset: -100; }
+        }
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to   { transform: translate(22px, -26px); }
+        }
+        @keyframes heatrise {
+            0%   { opacity: 0;   transform: translateY(14px); }
+            35%  { opacity: .45; }
+            100% { opacity: 0;   transform: translateY(-34px); }
+        }
+        @keyframes breathe {
+            from { opacity: .75; transform: scale(1); }
+            to   { opacity: 1;   transform: scale(1.07); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition-duration: .01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ───────────── RESPONSIVE ───────────── */
+        @media (min-width: 640px) {
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+            .card { padding: 16px 18px; }
+        }
+
         @media (max-width: 480px) {
-            .page { padding: 52px 20px 48px; }
-            .chapter-row { gap: 14px; padding: 15px 16px; }
-            .chapter-name { font-size: 13.5px; }
+            .hero { padding: 56px 20px 64px; border-radius: 0 0 24px 24px; }
+            .page { padding: 36px 16px 56px; }
+            .card-name { font-size: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="page">
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-cold"></div>
+        <div class="hero-glow"></div>
 
-        <!-- HEADER -->
-        <header class="header">
+        <svg class="hero-art" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <defs>
+                <linearGradient id="domeGrad" gradientUnits="userSpaceOnUse" x1="260" y1="0" x2="1020" y2="0">
+                    <stop offset="0"   stop-color="#6FAEE6"/>
+                    <stop offset=".5"  stop-color="#FFC27A"/>
+                    <stop offset="1"   stop-color="#FF6B2C"/>
+                </linearGradient>
+                <linearGradient id="domeFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#FFFFFF" stop-opacity=".07"/>
+                    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+
+            <!-- engineering grid -->
+            <path class="grid-line" d="M0 100H1200M0 200H1200M0 300H1200M0 400H1200M200 0V500M400 0V500M600 0V500M800 0V500M1000 0V500"/>
+
+            <!-- T–s axes -->
+            <path class="axis" d="M150 40 V460 H1100"/>
+
+            <!-- saturation (vapor) dome -->
+            <path d="M260 440 C300 300 480 150 640 120 C800 170 960 310 1020 440 Z" fill="url(#domeFill)"/>
+            <path class="dome" d="M260 440 C300 300 480 150 640 120 C800 170 960 310 1020 440"/>
+
+            <!-- Carnot cycle: heat in (hot) / heat out (cold) -->
+            <path class="cyc-edge" d="M520 200 V360 M780 200 V360"/>
+            <path class="cyc-hot"  d="M520 200 H780"/>
+            <path class="cyc-cold" d="M520 360 H780"/>
+            <path class="cyc-flow" pathLength="100" d="M520 200 H780 V360 H520 Z"/>
+            <circle class="cyc-node" cx="520" cy="200" r="3.5"/>
+            <circle class="cyc-node" cx="780" cy="200" r="3.5"/>
+            <circle class="cyc-node" cx="780" cy="360" r="3.5"/>
+            <circle class="cyc-node" cx="520" cy="360" r="3.5"/>
+
+            <!-- gas molecules (cold = blue, hot = amber) -->
+            <g class="mol m1">
+                <circle class="c" cx="300" cy="120" r="4"/>
+                <circle class="c" cx="380" cy="70"  r="2.5"/>
+                <circle class="c" cx="240" cy="260" r="3"/>
+                <circle class="c" cx="340" cy="330" r="2.5"/>
+            </g>
+            <g class="mol m2">
+                <circle class="c" cx="470" cy="420" r="3"/>
+                <circle class="h" cx="640" cy="440" r="3.5"/>
+                <circle class="c" cx="150" cy="170" r="2.5"/>
+                <circle class="h" cx="700" cy="70"  r="3"/>
+            </g>
+            <g class="mol m3">
+                <circle class="h" cx="880" cy="140" r="4"/>
+                <circle class="h" cx="960" cy="230" r="3"/>
+                <circle class="h" cx="1040" cy="320" r="2.5"/>
+                <circle class="h" cx="860" cy="400" r="3"/>
+            </g>
+
+            <!-- rising heat -->
+            <path class="heat"    d="M930 470 q14 -16 0 -32 t0 -32 t0 -32 t0 -32"/>
+            <path class="heat h2" d="M990 470 q14 -16 0 -32 t0 -32 t0 -32 t0 -32"/>
+            <path class="heat h3" d="M1050 470 q14 -16 0 -32 t0 -32 t0 -32 t0 -32"/>
+        </svg>
+
+        <div class="hero-inner">
             <p class="course-label">Thermodynamics</p>
-            <h1 class="course-title">THERMO<em>3</em></h1>
+            <h1 class="course-title">THERMO3</h1>
             <p class="course-subtitle">Lecture Notes &amp; Reference Materials</p>
-            <div class="header-rule">
-                <div class="header-dot"></div>
-            </div>
-        </header>
+        </div>
+    </header>
 
-        <!-- CHAPTER LIST -->
-        <p class="section-label">Chapters</p>
+    <main class="page">
 
-        <nav class="chapter-list">
+        <!-- CHAPTERS -->
+        <section class="block">
+            <p class="block-label">Chapters</p>
 
-            <!-- Chapter 8 -->
-            <a class="chapter-row" href="CH8_Exergy_UPGRADED.html">
-                <span class="chapter-num">01</span>
-                <div class="chapter-icon">
-                    <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                </div>
-                <div class="chapter-text">
-                    <div class="chapter-name">Chapter 8 — Exergy</div>
-                    <div class="chapter-desc">Second-law efficiency · Irreversibility · Exergy destruction</div>
-                </div>
-                <span class="chapter-arrow">→</span>
-            </a>
+            <nav class="grid" aria-label="Chapters">
 
-            <!-- Chapter 13 -->
-            <a class="chapter-row" href="gas_mixtures_enhanced.html">
-                <span class="chapter-num">02</span>
-                <div class="chapter-icon">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                </div>
-                <div class="chapter-text">
-                    <div class="chapter-name">Chapter 13 — Gas Mixtures</div>
-                    <div class="chapter-desc">Dalton's Law · Amagat's Law · Mixture properties</div>
-                </div>
-                <span class="chapter-arrow">→</span>
-            </a>
+                <!-- Chapter 8 -->
+                <a class="card" style="--i:0" href="CH8_Exergy_UPGRADED.html"
+                   aria-label="Chapter 8 — Exergy"
+                   title="Second-law efficiency · Irreversibility · Exergy destruction">
+                    <span class="card-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    </span>
+                    <span class="card-text">
+                        <span class="card-kicker">Chapter 8</span>
+                        <span class="card-name">Exergy</span>
+                    </span>
+                    <svg class="card-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+                </a>
 
-            <!-- Chapter 14 -->
-            <a class="chapter-row" href="Chapter 14.html">
-                <span class="chapter-num">03</span>
-                <div class="chapter-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-                </div>
-                <div class="chapter-text">
-                    <div class="chapter-name">Chapter 14 — Gas-Vapor Mixtures</div>
-                    <div class="chapter-desc">Psychrometrics · Humidity · Air-conditioning</div>
-                </div>
-                <span class="chapter-arrow">→</span>
-            </a>
+                <!-- Chapter 13 -->
+                <a class="card" style="--i:1" href="gas_mixtures_enhanced.html"
+                   aria-label="Chapter 13 — Gas Mixtures"
+                   title="Dalton's Law · Amagat's Law · Mixture properties">
+                    <span class="card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </span>
+                    <span class="card-text">
+                        <span class="card-kicker">Chapter 13</span>
+                        <span class="card-name">Gas Mixtures</span>
+                    </span>
+                    <svg class="card-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+                </a>
 
-            <!-- Chapter 15 -->
-            <a class="chapter-row" href="ch15_chemical_reactions_enhanced.html">
-                <span class="chapter-num">04</span>
-                <div class="chapter-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"></path></svg>
-                </div>
-                <div class="chapter-text">
-                    <div class="chapter-name">Chapter 15 — Chemical Reactions</div>
-                    <div class="chapter-desc">Stoichiometry · Enthalpy of formation · Combustion</div>
-                </div>
-                <span class="chapter-arrow">→</span>
-            </a>
+                <!-- Chapter 14 -->
+                <a class="card" style="--i:2" href="Chapter 14.html"
+                   aria-label="Chapter 14 — Gas-Vapor Mixtures"
+                   title="Psychrometrics · Humidity · Air-conditioning">
+                    <span class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                    </span>
+                    <span class="card-text">
+                        <span class="card-kicker">Chapter 14</span>
+                        <span class="card-name">Gas-Vapor Mixtures</span>
+                    </span>
+                    <svg class="card-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+                </a>
 
-        </nav>
-    </div>
+                <!-- Chapter 15 -->
+                <a class="card" style="--i:3" href="ch15_chemical_reactions_enhanced.html"
+                   aria-label="Chapter 15 — Chemical Reactions"
+                   title="Stoichiometry · Enthalpy of formation · Combustion">
+                    <span class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"></path></svg>
+                    </span>
+                    <span class="card-text">
+                        <span class="card-kicker">Chapter 15</span>
+                        <span class="card-name">Chemical Reactions</span>
+                    </span>
+                    <svg class="card-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+                </a>
+
+            </nav>
+        </section>
+
+        <!--
+            Future sections (solved problems, practice problems, examples…):
+            copy a <section class="block"> with its own <p class="block-label">
+            and a <nav class="grid"> of <a class="card"> items. Same styling applies.
+            Add only when real content exists.
+        -->
+
+    </main>
 
     <!-- FOOTER -->
     <footer>
