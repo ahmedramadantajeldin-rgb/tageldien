@@ -341,6 +341,33 @@
             .page { padding: 36px 16px 56px; }
             .card-name { font-size: 15px; }
         }
+        /* ───────────── BACK LINK ───────────── */
+        .hub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: rgba(236,244,252,.80);
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.20);
+            padding: 6px 16px;
+            border-radius: 50px;
+            transition: background .2s, border-color .2s, color .2s;
+            margin-bottom: 28px;
+        }
+        .hub-link:hover, .hub-link:focus-visible {
+            background: rgba(255,255,255,.18);
+            border-color: rgba(255,255,255,.45);
+            color: #fff;
+            outline: none;
+        }
+        .hub-link:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 3px; }
+        .hub-link svg { width: 14px; height: 14px; transition: transform .2s; }
+        .hub-link:hover svg { transform: translateX(-3px); }
     </style>
 </head>
 <body>
@@ -410,6 +437,10 @@
         </svg>
 
         <div class="hero-inner">
+            <a href="https://ahmedramadantajeldin-rgb.github.io/MechLibrary/" onclick="goBackToMechHub(event)" class="hub-link" title="Back to MechHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <span>Back to MechHub</span>
+            </a>
             <p class="course-label">Thermodynamics</p>
             <h1 class="course-title">THERMO3</h1>
             <p class="course-subtitle">Lecture Notes &amp; Reference Materials</p>
@@ -496,6 +527,27 @@
     <footer>
         <p class="footer-text"><strong>THERMO3</strong> · Thermodynamics 3 &nbsp;·&nbsp; All rights reserved</p>
     </footer>
+
+<script>
+/* ✦ MechHub back-navigation helper ✦
+ * Called by the "Back to MechHub" link.
+ * Logic:
+ *   1. If there is a prior history entry in this tab, go back (the user came
+ *      from MechHub via same-tab navigation — no new entry is added).
+ *   2. Otherwise navigate with location.replace() so MechHub replaces this
+ *      entry in the history stack (no dead end, no loop).
+ * Without JavaScript the plain href still works.
+ */
+function goBackToMechHub(e) {
+  if (e) e.preventDefault();
+  var HUB = "https://ahmedramadantajeldin-rgb.github.io/MechLibrary/";
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    window.location.replace(HUB);
+  }
+}
+</script>
 
 </body>
 </html>
